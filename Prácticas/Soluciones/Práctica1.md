@@ -159,7 +159,7 @@ d)
 ```
 
 ```
-  111111   <-- acarreos
+  111111   <-- acarreo
    100001₂
 +  011111₂
 ----------
@@ -167,7 +167,7 @@ d)
 ```
 
 ```
-  1111   <-- acarreos
+  1111   <-- acarreo
   01111₂
 + 01111₂
 --------
@@ -182,7 +182,7 @@ d)
 ```
 
 ```
-  1 1     <-- acarreos
+  1 1     <-- acarreo
    F0F0₁₆
 +  F0CA₁₆
 ---------
@@ -329,3 +329,87 @@ Dada la representación de un número en complemento a 2, para obtener la repres
         <td>0</td><td>0</td><td>1</td><td>1</td>
     </tr>
 </table>
+
+## Ejercicio 9
+
+```
+   0001₂ = (1)₁₀
++  0010₂ = (2)₁₀
+--------
+   0011₂ = (3)₁₀
+```
+
+```
+     1   <- acarreo
+   0001₂ = (1)₁₀
++  0001₂ = (1)₁₀
+--------
+   0010₂ = (2)₁₀
+```
+
+```
+  1 11   <- acarreo y overflow
+   1011₂ = (-5)₁₀
++  1011₂ = (-5)₁₀
+--------
+   0110₂ = (6)₁₀ ≠ (-10)₁₀ fuera del rango de representación
+```
+
+```
+  1      <- overflow
+   1000₂ = (-8)₁₀
++  1000₂ = (-8)₁₀
+--------
+   0000₂ = (0)₁₀ ≠ (-16)₁₀ fuera del rango de representación
+```
+
+```
+  1111   <- acarreo
+   1111₂ = (-1)₁₀
++  0001₂ = (1)₁₀
+--------
+   0000₂ = (0)₁₀
+```
+
+```
+   0000₂ = (0)₁₀
++  0000₂ = (0)₁₀
+--------
+   0000₂ = (0)₁₀
+```
+
+```
+   1     <- overflow
+   0100₂ = (4)₁₀
++  0100₂ = (4)₁₀
+--------
+   1000₂ = (-8)₁₀ ≠ (8)₁₀
+```
+
+```
+   0001₂ = (1)₁₀
++  1110₂ = (-2)₁₀
+--------
+   1111₂ = (-1)₁₀
+```
+
+## Ejercicio 10
+
+Rangos de representación con `k` dígitos:
+
+- Complemento a 2: `[-2^{k-1}, 2^{k-1} - 1]`
+- Signo+magnitud: `[-2^{k-1} + 1, 2^{k-1} - 1]`
+
+Podemos observar que en complemento a 2 tenemos 1 número más que podemos representar: `-2^{k-1}`.
+
+## Ejercicio 11
+
+Utilizando el sistema de representación complemento a 2, podemos reasignar la representación del `0`, es decir, el numeral compuesto de todos 0s, al número `2^{k-1}`.
+
+De esta forma el rango de representación resulta `[-2^{k-1}, 2^{k-1}] - {0}`. Si bien no tenemos forma de representar el `0`, podemos representar exactamente `2^{k-1}` números positivos y `2^{k-1}` números negativos.
+
+El total de números representables resulta `2^{k-1} + 2^{k-1} = 2^k` y esta es exactamente la cantidad de numerales que se pueden formar con `k` dígitos, por lo tanto la representación es biyectiva.
+
+## Ejercicio 12
+
+La afirmación es verdadera. Al tratarse de cadenas binarias, con `k` dígitos podemos obtener `2^k` numerales distintos. Observemos que este número es par. Luego, si asignamos uno de estos numerales al `0`, nos quedan `2^k - 1` numerales para distribuir entre los números positivos y negativos. Como `2^k - 1` es impar, no podemos dividir estar cantidad en exactamente 2 partes iguales, y por lo tanto siempre va a resultar que vamos a tener 1 numeral extra, ya sea para los positivos o los negativos.
