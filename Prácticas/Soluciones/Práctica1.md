@@ -283,41 +283,49 @@ Dada la representación de un número en complemento a 2, para obtener la repres
 
 ## Ejercicio 8
 
-```
-+-------------------+
-|        -4         |
-+-------------------+
-| 2 | 0 | 0 | 0 | 0 |
-+---+---+---+---+---+
-| 3 | 0 | 0 | 0 | 0 |
-+---+---+---+---+---+
-| 4 | 0 | 0 | 0 | 0 |
-+---+---+---+---+---+
-```
-
-<table style="font: monospace">
+<table>
     <tr>
-        <th colspan="5" style="text-align: center;">-4</th>
+        <th></th>
+        <th colspan="4" style="text-align: center;">-4</th>
+        <th colspan="4" style="text-align: center;">-3</th>
+        <th colspan="4" style="text-align: center;">-2</th>
+        <th colspan="4" style="text-align: center;">-1</th>
+        <th colspan="4" style="text-align: center;">0</th>
+        <th colspan="4" style="text-align: center;">1</th>
+        <th colspan="4" style="text-align: center;">2</th>
+        <th colspan="4" style="text-align: center;">3</th>
     </tr>
     <tr>
         <th>2</th>
-        <td>.</td>
-        <td>.</td>
-        <td>.</td>
-        <td>.</td>
+        <td colspan="4">overflow</td>
+        <td colspan="4">overflow</td>
+        <td>-</td><td>-</td><td>1</td><td>0</td>
+        <td>-</td><td>-</td><td>1</td><td>1</td>
+        <td>-</td><td>-</td><td>0</td><td>0</td>
+        <td>-</td><td>-</td><td>0</td><td>1</td>
+        <td colspan="4">overflow</td>
+        <td colspan="4">overflow</td>
     </tr>
     <tr>
         <th>3</th>
-        <td>.</td>
-        <td>.</td>
-        <td>.</td>
-        <td>.</td>
+        <td>-</td><td>1</td><td>0</td><td>0</td>
+        <td>-</td><td>1</td><td>0</td><td>1</td>
+        <td>-</td><td>1</td><td>1</td><td>0</td>
+        <td>-</td><td>1</td><td>1</td><td>1</td>
+        <td>-</td><td>0</td><td>0</td><td>0</td>
+        <td>-</td><td>0</td><td>0</td><td>1</td>
+        <td>-</td><td>0</td><td>1</td><td>0</td>
+        <td>-</td><td>0</td><td>1</td><td>1</td>
     </tr>
     <tr>
         <th>4</th>
-        <td>.</td>
-        <td>.</td>
-        <td>.</td>
-        <td>.</td>
+        <td>1</td><td>1</td><td>0</td><td>0</td>
+        <td>1</td><td>1</td><td>0</td><td>1</td>
+        <td>1</td><td>1</td><td>1</td><td>0</td>
+        <td>1</td><td>1</td><td>1</td><td>1</td>
+        <td>0</td><td>0</td><td>0</td><td>0</td>
+        <td>0</td><td>0</td><td>0</td><td>1</td>
+        <td>0</td><td>0</td><td>1</td><td>0</td>
+        <td>0</td><td>0</td><td>1</td><td>1</td>
     </tr>
 </table>
