@@ -413,3 +413,24 @@ El total de números representables resulta `2^{k-1} + 2^{k-1} = 2^k` y esta es 
 ## Ejercicio 12
 
 La afirmación es verdadera. Al tratarse de cadenas binarias, con `k` dígitos podemos obtener `2^k` numerales distintos. Observemos que este número es par. Luego, si asignamos uno de estos numerales al `0`, nos quedan `2^k - 1` numerales para distribuir entre los números positivos y negativos. Como `2^k - 1` es impar, no podemos dividir estar cantidad en exactamente 2 partes iguales, y por lo tanto siempre va a resultar que vamos a tener 1 numeral extra, ya sea para los positivos o los negativos.
+
+## Ejercicio 13
+
+Te lo debo.
+
+## Ejercicio 14
+
+Rango de representación: `[-2^16, 2^16 - 1] = [-65536, 65535]`. Reordenamos los términos para que las sumas parciales cada 2 términos no se vayan fueran del rango de representación.
+
+```
+  (7744)₁₆ = (0111 0111 0100 0100)₂ =  (30532)₁₀
++ (88BD)₁₆ = (1000 1000 1011 1101)₂ = (-30531)₁₀
++ (6788)₁₆ = (0110 0111 1000 1000)₂ =  (26504)₁₀
++ (9879)₁₆ = (1001 1000 0111 1001)₂ = (-26503)₁₀
++ (5499)₁₆ = (0101 0100 1001 1001)₂ =  (21657)₁₀
++ (AB68)₁₆ = (1010 1011 0110 1000)₂ = (-21656)₁₀
+------------------------------------------------
+  (0003)₁₆ = (0000 0000 0000 0011)₂ =      (3)₁₀
+```
+
+Resuelto con la ayuda de un [script](p1-14.py).
