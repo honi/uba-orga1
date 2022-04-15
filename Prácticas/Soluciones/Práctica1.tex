@@ -1,0 +1,192 @@
+\input{Algo1Macros}
+\usepackage{caratula}
+\usepackage{enumerate}
+\usepackage{hyperref}
+\usepackage{xcolor,colortbl}
+\usepackage{listings}
+\usepackage{multicol}
+
+\decimalpoint
+\setlength{\parindent}{0em}
+\setlength{\parskip}{0.5em}
+\hypersetup{colorlinks=true, linkcolor=black, urlcolor=blue}
+\setcounter{tocdepth}{3}
+\lstset{basicstyle=\ttfamily, mathescape}
+\newcolumntype{x}{>{\columncolor[HTML]{FFF2CC}}c}
+\renewcommand{\thesubsection}{\thesection.\alph{subsection}}
+
+\begin{document}
+
+\titulo{Práctica 1}
+\subtitulo{Representación de la información}
+\fecha{1er cuatrimestre 2022}
+\materia{Organización del Computador 1}
+\integrante{Jonathan Bekenstein}{348/11}{jbekenstein@dc.uba.ar}
+
+\maketitle
+\tableofcontents
+\newpage
+
+\section{Ejercicio 1}
+
+\subsection{}
+
+\begin{multicols}{3}
+
+\begin{lstlisting}
+33 = 16 $\times$ 2 + 1
+16 =  8 $\times$ 2 + 0
+ 8 =  4 $\times$ 2 + 0
+ 4 =  2 $\times$ 2 + 0
+ 2 =  0 $\times$ 2 + 1
+$\implies$ 33$_{10}$ = 10001$_2$
+\end{lstlisting}
+
+\begin{lstlisting}
+33 = 11 $\times$ 3 + 0
+11 =  3 $\times$ 3 + 2
+ 3 =  1 $\times$ 3 + 0
+ 1 =  0 $\times$ 3 + 1
+$\implies$ 33$_{10}$ = 1020$_3$
+\end{lstlisting}
+
+\begin{lstlisting}
+33 = 6 $\times$ 5 + 3
+ 6 = 1 $\times$ 5 + 1
+ 1 = 0 $\times$ 5 + 1
+$\implies$ 33$_{10}$ = 113$_5$
+\end{lstlisting}
+
+\vspace*{\fill}
+\columnbreak
+
+\begin{lstlisting}
+100 = 50 $\times$ 2 + 0
+ 50 = 25 $\times$ 2 + 0
+ 25 = 12 $\times$ 2 + 1
+ 12 =  6 $\times$ 2 + 0
+  6 =  3 $\times$ 2 + 0
+  3 =  1 $\times$ 2 + 1
+  1 =  0 $\times$ 2 + 1
+$\implies$ 100$_{10}$ = 1100100$_2$
+\end{lstlisting}
+
+\begin{lstlisting}
+100 = 33 $\times$ 3 + 1
+ 33 = 11 $\times$ 3 + 0
+ 11 =  3 $\times$ 3 + 2
+  3 =  1 $\times$ 3 + 0
+  1 =  0 $\times$ 3 + 1
+$\implies$ 100$_{10}$ = 10201$_3$
+\end{lstlisting}
+
+\begin{lstlisting}
+100 = 20 $\times$ 5 + 0
+ 20 =  4 $\times$ 5 + 0
+  4 =  0 $\times$ 5 + 4
+$\implies$ 100$_{10}$ = 400$_5$
+\end{lstlisting}
+
+\vspace*{\fill}
+\columnbreak
+
+\begin{lstlisting}
+1023 = 511 $\times$ 2 + 1
+ 511 = 255 $\times$ 2 + 1
+ 255 = 127 $\times$ 2 + 1
+ 127 =  63 $\times$ 2 + 1
+  63 =  31 $\times$ 2 + 1
+  31 =  15 $\times$ 2 + 1
+  15 =   7 $\times$ 2 + 1
+   7 =   3 $\times$ 2 + 1
+   3 =   1 $\times$ 2 + 1
+   1 =   0 $\times$ 2 + 1
+$\implies$ 1023$_{10}$ = 1111111111$_2$
+\end{lstlisting}
+
+\begin{lstlisting}
+1023 = 341 $\times$ 3 + 0
+ 341 = 113 $\times$ 3 + 2
+ 113 =  37 $\times$ 3 + 2
+  37 =  12 $\times$ 3 + 1
+  12 =   4 $\times$ 3 + 0
+   4 =   1 $\times$ 3 + 1
+   1 =   0 $\times$ 3 + 1
+$\implies$ 1023$_{10}$ = 1101220$_3$
+\end{lstlisting}
+
+\begin{lstlisting}
+1023 = 204 $\times$ 5 + 3
+ 204 =  40 $\times$ 5 + 4
+  40 =   8 $\times$ 5 + 0
+   8 =   1 $\times$ 5 + 3
+   1 =   0 $\times$ 5 + 1
+$\implies$ 1023$_{10}$ = 13043$_5$
+\end{lstlisting}
+
+\end{multicols}
+
+\subsection{}
+
+\emph{Nota: a la derecha del igual se interpretan todos los números en base 10.}
+
+\begin{lstlisting}
+1111$_2$ = (1 $\times$ 2$^3$) + (1 $\times$ 2$^2$) + (1 $\times$ 2$^1$) + (1 $\times$ 2${^0}$)
+= 8 + 4 + 2 + 1
+= 15
+\end{lstlisting}
+
+\begin{lstlisting}
+1111$_3$ = (1 $\times$ 3$^3$) + (1 $\times$ 3$^2$) + (1 $\times$ 3$^1$) + (1 $\times$ 3${^0}$)
+= 27 + 9 + 3 + 1
+= 40
+\end{lstlisting}
+
+\begin{lstlisting}
+1111$_5$ = (1 $\times$ 5$^3$) + (1 $\times$ 5$^2$) + (1 $\times$ 5$^1$) + (1 $\times$ 5${^0}$)
+= 125 + 25 + 5 + 1
+= 156
+\end{lstlisting}
+
+\begin{lstlisting}
+CAFE$_{16}$ = (12 $\times$ 16$^3$) + (10 $\times$ 16$^2$) + (15 $\times$ 16$^1$) + (14 $\times$ 16${^0}$)
+= 49152 + 2560 + 240 + 14
+= 51966
+\end{lstlisting}
+
+\pagebreak
+\subsection{}
+
+\begin{lstlisting}
+17$_8$ = (1 $\times$ 8$^1$) + (7 $\times$ 8$^0$) = (15)$_{10}$
+
+15 = 3 $\times$ 5 + 0
+ 3 = 0 $\times$ 5 + 3
+
+$\implies$ 17$_8$ = 15$_{10}$ = 30$_5$
+\end{lstlisting}
+
+\begin{lstlisting}
+BABA$_{13}$ = (11 $\times$ 13$^3$) + (10 $\times$ 13$^2$) + (11 $\times$ 13$^1$) + (10 $\times$ 13$^0$) = (26010)$_{10}$
+
+26010 = 4335 $\times$ 6 + 0
+ 4335 =  722 $\times$ 6 + 3
+  722 =  120 $\times$ 6 + 2
+  120 =   20 $\times$ 6 + 0
+   20 =    3 $\times$ 6 + 2
+    3 =    0 $\times$ 6 + 3
+
+$\implies$ BABA$_{13}$ = 26010$_{10}$ = 320230$_6$
+\end{lstlisting}
+
+\subsection{}
+
+\begin{lstlisting}
+(10 01 01 10 10 10 01 01)$_2$ = 21122211$_4$
+(001 001 011 010 100 101)$_2$ = 113245$_8$
+(1001 0110 1010 0101)$_2$ = 96A5$_{16}$
+\end{lstlisting}
+
+\section{Ejercicio 2}
+
+\end{document}

@@ -145,11 +145,13 @@ d)
 
 ```
 (10 01 01 10 10 10 01 01)₂ = (21122211)₄
-(1 001 011 010 100 101)₂ = (113245)₈
+(001 001 011 010 100 101)₂ = (113245)₈
 (1001 0110 1010 0101)₂ = (96A5)₁₆
 ```
 
 ## Ejercicio 2
+
+Esto está mal, tengo que corregirlo.
 
 ```
   100001₂
@@ -340,6 +342,14 @@ Dada la representación de un número en complemento a 2, para obtener la repres
 ```
 
 ```
+  111
+   0111₂ = (7)₁₀
++  1110₂ = (-2)₁₀
+--------
+   0101₂ = (5)₁₀
+```
+
+```
      1   <- acarreo
    0001₂ = (1)₁₀
 +  0001₂ = (1)₁₀
@@ -356,11 +366,11 @@ Dada la representación de un número en complemento a 2, para obtener la repres
 ```
 
 ```
-  1      <- overflow
-   1000₂ = (-8)₁₀
-+  1000₂ = (-8)₁₀
+   1 1   <- acarreo
+   0101₂ = (5)₁₀
++  0101₂ = (5)₁₀
 --------
-   0000₂ = (0)₁₀ ≠ (-16)₁₀ fuera del rango de representación
+   1010₂ = (0)₁₀ ≠ (-16)₁₀ fuera del rango de representación
 ```
 
 ```

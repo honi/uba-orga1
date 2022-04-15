@@ -1,0 +1,168 @@
+\input{Algo1Macros}
+\usepackage{caratula}
+\usepackage{enumerate}
+\usepackage{hyperref}
+\usepackage{xcolor,colortbl}
+\usepackage{svg}
+\usepackage{pifont}
+
+\setlength{\parindent}{0em}
+\setlength{\parskip}{1em}
+\setlength{\intextsep}{1em}
+\setlength{\abovedisplayskip}{1em}
+\setlength{\belowdisplayskip}{1em}
+\setlength{\abovedisplayshortskip}{1em}
+\setlength{\belowdisplayshortskip}{1em}
+\decimalpoint
+\setcounter{tocdepth}{3}
+\hypersetup{colorlinks=true, linkcolor=black, urlcolor=blue}
+\newcolumntype{x}{>{\columncolor[HTML]{FFF2CC}}c}
+\renewcommand{\thesubsection}{\thesection.\alph{subsection}}
+\newcommand{\xor}{\oplus}
+\newcommand{\xmark}{\color{purple}\ding{54}}
+
+\begin{document}
+
+\titulo{Práctica 2}
+\subtitulo{Lógica Digital}
+\fecha{1er cuatrimestre 2022}
+\materia{Organización del Computador 1}
+\integrante{Jonathan Bekenstein}{348/11}{jbekenstein@dc.uba.ar}
+
+\maketitle
+\tableofcontents
+\newpage
+
+\section{Ejercicio 1}
+
+Calculando las tablas de verdad podemos ver la equivalencia de las fórmulas booleanas.
+
+\subsection{}
+
+$p=(p.q)+(p.\overline{q})$
+
+\begin{tabular}{|x|c|c|x|c|}
+    $p$ & $q$ & $(p.q)$ & $+$ & $(p.\overline{q})$ \\
+    \hline
+    0 & 0 & 0 & 0 & 0 \\
+    0 & 1 & 0 & 0 & 0 \\
+    1 & 0 & 0 & 1 & 1 \\
+    1 & 1 & 1 & 1 & 0 \\
+\end{tabular}
+
+\subsection{}
+
+$x.z = (x+y).(x+\overline{y}).(\overline{x}+z)$
+
+\begin{tabular}{|c|c|c||x|c|c|c|x|c|}
+    $x$ & $y$ & $z$ & $x.z$ & $(x+y)$ & $.$ & $(x+\overline{y})$ & $.$ & $(\overline{x}+z)$ \\
+    \hline
+    0 & 0 & 0 & 0 & 0 & 0 & 1 & 0 & 1 \\
+    0 & 0 & 1 & 0 & 0 & 0 & 1 & 0 & 1 \\
+    0 & 1 & 0 & 0 & 1 & 0 & 0 & 0 & 1 \\
+    0 & 1 & 1 & 0 & 1 & 0 & 0 & 0 & 1 \\
+    1 & 0 & 0 & 0 & 1 & 1 & 1 & 0 & 0 \\
+    1 & 0 & 1 & 1 & 1 & 1 & 1 & 1 & 1 \\
+    1 & 1 & 0 & 0 & 1 & 1 & 1 & 0 & 0 \\
+    1 & 1 & 1 & 1 & 1 & 1 & 1 & 1 & 1 \\
+\end{tabular}
+
+\section{Ejercicio 2}
+
+Resolviendo mediante propiedades llegamos a 2 fórmulas que a priori no parecen ser equivalentes. Notar en la última línea que a la izquierda tenemos $\overline{y.z}$ mientras que a la derecha tenemos $\overline{y}.\overline{z}$.
+\begin{flalign*}
+x \xor (y.z) &= (x \xor y).(x \xor z) &&\\
+\overline{x}.y.z + x.\overline{y.z} &= (\overline{x}.y + x.\overline{y}).(\overline{x}.z + x.\overline{z}) &&\\
+\overline{x}.y.z + x.\overline{y.z} &= (\overline{x}.y + x.\overline{y}).\overline{x}.z + (\overline{x}.y + x.\overline{y}).x.\overline{z} &&\\
+\overline{x}.y.z + x.\overline{y.z} &= \overline{x}.y.\overline{x}.z + x.\overline{y}.\overline{x}.z + \overline{x}.y.x.\overline{z} + x.\overline{y}.x.\overline{z} &&\\
+\overline{x}.y.z + x.\overline{y.z} &= \overline{x}.y.z + x.\overline{y}.\overline{z} &&\\
+\end{flalign*}
+
+Calculamos la tabla de verdad para verificar.
+
+\begin{tabular}{|c|c|c||c|x|c|c|x|c|c|}
+    $x$ & $y$ & $z$ & $x$ & $\xor$ & $(y.z)$ & $(x \xor y)$ & . & $(x \xor z)$ & \\
+    \hline
+    1 & 1 & 1 & 1 & 0 & 1 & 0 & 0 & 0 &  \\
+    1 & 1 & 0 & 1 & 1 & 0 & 0 & 0 & 1 & \xmark \\
+    1 & 0 & 1 & 1 & 1 & 0 & 1 & 0 & 0 & \xmark \\
+    1 & 0 & 0 & 1 & 1 & 0 & 1 & 1 & 1 &  \\
+    0 & 1 & 1 & 0 & 1 & 1 & 1 & 1 & 1 &  \\
+    0 & 1 & 0 & 0 & 0 & 0 & 1 & 0 & 0 &  \\
+    0 & 0 & 1 & 0 & 0 & 0 & 0 & 0 & 1 &  \\
+    0 & 0 & 0 & 0 & 0 & 0 & 0 & 0 & 0 &  \\
+\end{tabular}
+
+Conclusión: la propiedad planteada es falsa.
+
+\section{Ejercicio 3}
+
+\subsection{}
+
+Verdadero, con el operador NAND ($p|q = \overline{p.q}$) podemos representar todas las funciones booleanas: AND, OR, NOT.
+
+Recordemos la tabla de verdad del NAND.
+
+\begin{tabular}{|c|c|c|x|}
+    $p$ & $q$ & $p.q$ & $p|q = \overline{p.q}$ \\
+    \hline
+    0 & 0 & 0 & 1 \\
+    0 & 1 & 0 & 1 \\
+    1 & 0 & 0 & 1 \\
+    1 & 1 & 1 & 0 \\
+\end{tabular}
+
+\subsubsection{NOT}
+
+Utilizando la misma entrada 2 veces en un NAND podemos obtener un NOT.
+
+$p|p = \overline{p}$
+
+\begin{tabular}{|c|x|x|}
+    $p$ & $p|p$ & $\overline{p}$ \\
+    \hline
+    0 & 1 & 1 \\
+    1 & 0 & 0 \\
+\end{tabular}
+
+\begin{figure}[H]
+    \includesvg{circuitos/NAND_NOT}
+\end{figure}
+
+\subsubsection{AND}
+
+Utilizando el NOT ya construido, podemos encadenarlo a la salida de un NAND para cancelar su negación y así obtener el resultado original del AND.
+
+$(p|q)|(p|q) = p.q$
+
+\begin{tabular}{|c|c|c|x|x|}
+    $p$ & $q$ & $p|p$ & $(p|q)|(p|q)$ & $p.q$ \\
+    \hline
+    0 & 0 & 1 & 0 & 0 \\
+    0 & 1 & 1 & 0 & 0 \\
+    1 & 0 & 1 & 0 & 0 \\
+    1 & 1 & 0 & 1 & 1 \\
+\end{tabular}
+
+\begin{figure}[H]
+    \includesvg{circuitos/NAND_AND}
+\end{figure}
+
+\subsubsection{OR}
+
+$(p|p)|(q|q) = \overline{p}|\overline{q} = \overline{\overline{p}.\overline{q}} = \overline{\overline{p}}+\overline{\overline{q}} = p+q$
+
+\begin{tabular}{|c|c|c|x|c|x|}
+    $p$ & $q$ & $(p|p)$ & $|$ & $(q|q)$ & $p+q$ \\
+    \hline
+    0 & 0 & 1 & 0 & 1 & 0 \\
+    0 & 1 & 1 & 1 & 0 & 1 \\
+    1 & 0 & 0 & 1 & 1 & 1 \\
+    1 & 1 & 0 & 1 & 0 & 1 \\
+\end{tabular}
+
+\begin{figure}[H]
+    \includesvg{circuitos/NAND_OR}
+\end{figure}
+
+\end{document}
