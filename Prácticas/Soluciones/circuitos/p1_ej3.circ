@@ -144,4 +144,97 @@
     <wire from="(80,50)" to="(80,70)"/>
     <wire from="(80,70)" to="(100,70)"/>
   </circuit>
+  <circuit name="NOR_NOT">
+    <a name="appearance" val="logisim_evolution"/>
+    <a name="circuit" val="NOR_NOT"/>
+    <a name="circuitnamedboxfixedsize" val="true"/>
+    <a name="simulationFrequency" val="1.0"/>
+    <comp lib="0" loc="(170,50)" name="Pin">
+      <a name="appearance" val="NewPins"/>
+      <a name="facing" val="west"/>
+      <a name="label" val="NOTp"/>
+      <a name="output" val="true"/>
+    </comp>
+    <comp lib="0" loc="(70,50)" name="Pin">
+      <a name="appearance" val="NewPins"/>
+      <a name="label" val="p"/>
+    </comp>
+    <comp lib="1" loc="(160,50)" name="NOR Gate"/>
+    <wire from="(160,50)" to="(170,50)"/>
+    <wire from="(70,50)" to="(80,50)"/>
+    <wire from="(80,30)" to="(100,30)"/>
+    <wire from="(80,30)" to="(80,50)"/>
+    <wire from="(80,50)" to="(80,70)"/>
+    <wire from="(80,70)" to="(100,70)"/>
+  </circuit>
+  <circuit name="NOR_AND">
+    <a name="appearance" val="logisim_evolution"/>
+    <a name="circuit" val="NOR_AND"/>
+    <a name="circuitnamedboxfixedsize" val="true"/>
+    <a name="simulationFrequency" val="1.0"/>
+    <comp lib="0" loc="(280,90)" name="Pin">
+      <a name="appearance" val="NewPins"/>
+      <a name="facing" val="west"/>
+      <a name="label" val="pANDq"/>
+      <a name="output" val="true"/>
+    </comp>
+    <comp lib="0" loc="(70,130)" name="Pin">
+      <a name="appearance" val="NewPins"/>
+      <a name="label" val="q"/>
+    </comp>
+    <comp lib="0" loc="(70,50)" name="Pin">
+      <a name="appearance" val="NewPins"/>
+      <a name="label" val="p"/>
+    </comp>
+    <comp lib="1" loc="(160,130)" name="NOR Gate"/>
+    <comp lib="1" loc="(160,50)" name="NOR Gate"/>
+    <comp lib="1" loc="(270,90)" name="NOR Gate"/>
+    <wire from="(160,130)" to="(190,130)"/>
+    <wire from="(160,50)" to="(190,50)"/>
+    <wire from="(190,110)" to="(190,130)"/>
+    <wire from="(190,110)" to="(210,110)"/>
+    <wire from="(190,50)" to="(190,70)"/>
+    <wire from="(190,70)" to="(210,70)"/>
+    <wire from="(270,90)" to="(280,90)"/>
+    <wire from="(70,130)" to="(80,130)"/>
+    <wire from="(70,50)" to="(80,50)"/>
+    <wire from="(80,110)" to="(100,110)"/>
+    <wire from="(80,110)" to="(80,130)"/>
+    <wire from="(80,130)" to="(80,150)"/>
+    <wire from="(80,150)" to="(100,150)"/>
+    <wire from="(80,30)" to="(100,30)"/>
+    <wire from="(80,30)" to="(80,50)"/>
+    <wire from="(80,50)" to="(80,70)"/>
+    <wire from="(80,70)" to="(100,70)"/>
+  </circuit>
+  <circuit name="NOR_OR">
+    <a name="appearance" val="logisim_evolution"/>
+    <a name="circuit" val="NOR_OR"/>
+    <a name="circuitnamedboxfixedsize" val="true"/>
+    <a name="simulationFrequency" val="1.0"/>
+    <comp lib="0" loc="(250,50)" name="Pin">
+      <a name="appearance" val="NewPins"/>
+      <a name="facing" val="west"/>
+      <a name="label" val="pORq"/>
+      <a name="output" val="true"/>
+    </comp>
+    <comp lib="0" loc="(70,30)" name="Pin">
+      <a name="appearance" val="NewPins"/>
+      <a name="label" val="p"/>
+    </comp>
+    <comp lib="0" loc="(70,70)" name="Pin">
+      <a name="appearance" val="NewPins"/>
+      <a name="label" val="q"/>
+    </comp>
+    <comp lib="1" loc="(140,50)" name="NOR Gate"/>
+    <comp lib="1" loc="(240,50)" name="NOR Gate"/>
+    <wire from="(140,50)" to="(160,50)"/>
+    <wire from="(160,30)" to="(160,50)"/>
+    <wire from="(160,30)" to="(180,30)"/>
+    <wire from="(160,50)" to="(160,70)"/>
+    <wire from="(160,70)" to="(180,70)"/>
+    <wire from="(240,50)" to="(250,50)"/>
+    <wire from="(70,30)" to="(80,30)"/>
+    <wire from="(70,70)" to="(80,70)"/>
+  </circuit>
 </project>

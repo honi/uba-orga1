@@ -136,7 +136,7 @@ Utilizando el NOT ya construido, podemos encadenarlo a la salida de un NAND para
 $(p|q)|(p|q) = p.q$
 
 \begin{tabular}{|c|c|c|x|x|}
-    $p$ & $q$ & $p|p$ & $(p|q)|(p|q)$ & $p.q$ \\
+    $p$ & $q$ & $p|q$ & $(p|q)|(p|q)$ & $p.q$ \\
     \hline
     0 & 0 & 1 & 0 & 0 \\
     0 & 1 & 1 & 0 & 0 \\
@@ -163,6 +163,72 @@ $(p|p)|(q|q) = \overline{p}|\overline{q} = \overline{\overline{p}.\overline{q}} 
 
 \begin{figure}[H]
     \includesvg{circuitos/NAND_OR}
+\end{figure}
+
+\subsection{}
+
+Verdadero, con el operador NOR ($p\downarrow q = \overline{p+q}$) podemos representar todas las funciones booleanas: AND, OR, NOT.
+
+Recordemos la tabla de verdad del NOR.
+
+\begin{tabular}{|c|c|c|x|}
+    $p$ & $q$ & $p+q$ & $p\downarrow q = \overline{p+q}$ \\
+    \hline
+    0 & 0 & 0 & 1 \\
+    0 & 1 & 1 & 0 \\
+    1 & 0 & 1 & 0 \\
+    1 & 1 & 1 & 0 \\
+\end{tabular}
+
+Observemos que los circuitos para armar las funciones booleanas utilizando solo la compuerta NOR son análogos a los utilizandos con la compuerta NAND.
+
+\subsubsection{NOT}
+
+$p\downarrow p = \overline{p}$
+
+\begin{tabular}{|c|x|x|}
+    $p$ & $p\downarrow p$ & $\overline{p}$ \\
+    \hline
+    0 & 1 & 1 \\
+    1 & 0 & 0 \\
+\end{tabular}
+
+\begin{figure}[H]
+    \includesvg{circuitos/NOR_NOT}
+\end{figure}
+
+\subsubsection{AND}
+
+$(p\downarrow p)\downarrow(q\downarrow q) = \overline{p}\downarrow\overline{q} = \overline{\overline{p}+\overline{q}} = \overline{\overline{p}}.\overline{\overline{q}} = p.q$
+
+\begin{tabular}{|c|c|c|x|c|x|}
+    $p$ & $q$ & $(p\downarrow p)$ & $\downarrow$ & $(q\downarrow q)$ & $p.q$ \\
+    \hline
+    0 & 0 & 1 & 0 & 1 & 0 \\
+    0 & 1 & 1 & 0 & 0 & 0 \\
+    1 & 0 & 0 & 0 & 1 & 0 \\
+    1 & 1 & 0 & 1 & 0 & 1 \\
+\end{tabular}
+
+\begin{figure}[H]
+    \includesvg{circuitos/NOR_AND}
+\end{figure}
+
+\subsubsection{OR}
+
+$(p\downarrow q)\downarrow(p\downarrow q) = (\overline{p+q}) \downarrow (\overline{p+q}) = \overline{\overline{p+q}} = p+q$
+
+\begin{tabular}{|c|c|c|x|x|}
+    $p$ & $q$ & $p\downarrow q$ & $(p\downarrow q)\downarrow(p\downarrow q)$ & $p+q$ \\
+    \hline
+    0 & 0 & 1 & 0 & 0 \\
+    0 & 1 & 0 & 1 & 1 \\
+    1 & 0 & 0 & 1 & 1 \\
+    1 & 1 & 0 & 1 & 1 \\
+\end{tabular}
+
+\begin{figure}[H]
+    \includesvg{circuitos/NOR_OR}
 \end{figure}
 
 \end{document}
