@@ -3,6 +3,11 @@
    <polyline fill="none" points="228,35 238,35" stroke="rgb(0, 0, 0)" stroke-linecap="square" stroke-width="3.0"/>
    <polyline fill="none" points="128,35 148,35" stroke="rgb(0, 0, 0)" stroke-linecap="square" stroke-width="3.0"/>
    <ellipse cx="148.0" cy="35.0" fill="rgb(0, 0, 0)" rx="5.0" ry="5.0" stroke="none" stroke-width="3.0"/>
+   <polyline fill="none" points="242,35 239,35" stroke="rgb(0, 0, 0)" stroke-linecap="square" stroke-width="3.0"/>
+   <polygon fill="none" points="268,26 278,35 268,44 244,44 244,26" stroke="rgb(0, 0, 0)" stroke-linecap="square" stroke-width="2.0"/>
+   <text fill="rgb(0, 0, 0)" font-family="Monospaced" font-size="12" x="244.0" y="41.0">x1</text>
+   <text fill="rgb(0, 0, 0)" font-family="Monospaced" font-size="16" font-weight="bold" x="280.0" y="43.0">pORq</text>
+   <ellipse cx="238.0" cy="35.0" fill="rgb(0, 0, 0)" rx="2.0" ry="2.0" stroke="none" stroke-width="2.0"/>
    <polygon fill="none" points="43,24 53,15 43,6 19,6 19,24" stroke="rgb(0, 0, 0)" stroke-linecap="square" stroke-width="2.0"/>
    <text fill="rgb(0, 0, 0)" font-family="Monospaced" font-size="12" x="24.0" y="21.0">x1</text>
    <text fill="rgb(0, 0, 0)" font-family="Monospaced" font-size="16" font-weight="bold" x="5.0" y="23.0">p</text>
@@ -11,16 +16,11 @@
    <text fill="rgb(0, 0, 0)" font-family="Monospaced" font-size="12" x="24.0" y="61.0">x1</text>
    <text fill="rgb(0, 0, 0)" font-family="Monospaced" font-size="16" font-weight="bold" x="5.0" y="63.0">q</text>
    <ellipse cx="58.0" cy="55.0" fill="rgb(0, 0, 0)" rx="2.0" ry="2.0" stroke="none" stroke-width="2.0"/>
-   <polyline fill="none" points="242,35 239,35" stroke="rgb(0, 0, 0)" stroke-linecap="square" stroke-width="3.0"/>
-   <polygon fill="none" points="268,26 278,35 268,44 244,44 244,26" stroke="rgb(0, 0, 0)" stroke-linecap="square" stroke-width="2.0"/>
-   <text fill="rgb(0, 0, 0)" font-family="Monospaced" font-size="12" x="244.0" y="41.0">x1</text>
-   <text fill="rgb(0, 0, 0)" font-family="Monospaced" font-size="16" font-weight="bold" x="280.0" y="43.0">pORq</text>
-   <ellipse cx="238.0" cy="35.0" fill="rgb(0, 0, 0)" rx="2.0" ry="2.0" stroke="none" stroke-width="2.0"/>
-   <polyline fill="none" points="170,15 168,15 148,15 148,35 148,55 168,55 170,55" stroke="rgb(0, 0, 0)" stroke-linecap="square" stroke-width="3.0"/>
-   <path d=" M218.0,35.0 C198.0,10.0 198.0,10.0 168.0,10.0 C181.0,35.0 181.0,35.0 168.0,60.0 C198.0,60.0 198.0,60.0 218.0,35.0 Z" fill="none" stroke="rgb(0, 0, 0)" stroke-linecap="square" stroke-width="2.0"/>
-   <ellipse cx="223.0" cy="35.0" fill="none" rx="4.5" ry="4.5" stroke="rgb(0, 0, 0)" stroke-width="2.0"/>
    <polyline fill="none" points="53,15 58,15 68,15 70,15" stroke="rgb(0, 0, 0)" stroke-linecap="square" stroke-width="3.0"/>
    <polyline fill="none" points="53,55 58,55 68,55 70,55" stroke="rgb(0, 0, 0)" stroke-linecap="square" stroke-width="3.0"/>
    <path d=" M118.0,35.0 C98.0,10.0 98.0,10.0 68.0,10.0 C81.0,35.0 81.0,35.0 68.0,60.0 C98.0,60.0 98.0,60.0 118.0,35.0 Z" fill="none" stroke="rgb(0, 0, 0)" stroke-linecap="square" stroke-width="2.0"/>
    <ellipse cx="123.0" cy="35.0" fill="none" rx="4.5" ry="4.5" stroke="rgb(0, 0, 0)" stroke-width="2.0"/>
+   <polyline fill="none" points="170,15 168,15 148,15 148,35 148,55 168,55 170,55" stroke="rgb(0, 0, 0)" stroke-linecap="square" stroke-width="3.0"/>
+   <path d=" M218.0,35.0 C198.0,10.0 198.0,10.0 168.0,10.0 C181.0,35.0 181.0,35.0 168.0,60.0 C198.0,60.0 198.0,60.0 218.0,35.0 Z" fill="none" stroke="rgb(0, 0, 0)" stroke-linecap="square" stroke-width="2.0"/>
+   <ellipse cx="223.0" cy="35.0" fill="none" rx="4.5" ry="4.5" stroke="rgb(0, 0, 0)" stroke-width="2.0"/>
 </svg>

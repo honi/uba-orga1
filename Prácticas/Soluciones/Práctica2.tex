@@ -71,11 +71,11 @@ $x.z = (x+y).(x+\overline{y}).(\overline{x}+z)$
 
 Resolviendo mediante propiedades llegamos a 2 fórmulas que a priori no parecen ser equivalentes. Notar en la última línea que a la izquierda tenemos $\overline{y.z}$ mientras que a la derecha tenemos $\overline{y}.\overline{z}$.
 \begin{flalign*}
-x \xor (y.z) &= (x \xor y).(x \xor z) &&\\
-\overline{x}.y.z + x.\overline{y.z} &= (\overline{x}.y + x.\overline{y}).(\overline{x}.z + x.\overline{z}) &&\\
-\overline{x}.y.z + x.\overline{y.z} &= (\overline{x}.y + x.\overline{y}).\overline{x}.z + (\overline{x}.y + x.\overline{y}).x.\overline{z} &&\\
-\overline{x}.y.z + x.\overline{y.z} &= \overline{x}.y.\overline{x}.z + x.\overline{y}.\overline{x}.z + \overline{x}.y.x.\overline{z} + x.\overline{y}.x.\overline{z} &&\\
-\overline{x}.y.z + x.\overline{y.z} &= \overline{x}.y.z + x.\overline{y}.\overline{z} &&\\
+    x \xor (y.z) &= (x \xor y).(x \xor z) &&\\
+    \overline{x}.y.z + x.\overline{y.z} &= (\overline{x}.y + x.\overline{y}).(\overline{x}.z + x.\overline{z}) &&\\
+    \overline{x}.y.z + x.\overline{y.z} &= (\overline{x}.y + x.\overline{y}).\overline{x}.z + (\overline{x}.y + x.\overline{y}).x.\overline{z} &&\\
+    \overline{x}.y.z + x.\overline{y.z} &= \overline{x}.y.\overline{x}.z + x.\overline{y}.\overline{x}.z + \overline{x}.y.x.\overline{z} + x.\overline{y}.x.\overline{z} &&\\
+    \overline{x}.y.z + x.\overline{y.z} &= \overline{x}.y.z + x.\overline{y}.\overline{z}
 \end{flalign*}
 
 Calculamos la tabla de verdad para verificar.
@@ -229,6 +229,116 @@ $(p\downarrow q)\downarrow(p\downarrow q) = (\overline{p+q}) \downarrow (\overli
 
 \begin{figure}[H]
     \includesvg{circuitos/NOR_OR}
+\end{figure}
+
+\section{Ejercicio 4}
+
+Resuelto en el ejercicio 3.
+
+\section{Ejercicio 5}
+
+\begin{tabular}{|c|c|c|x|}
+    $p$ & $q$ & $r$ & $p.q.r$ \\
+    \hline
+    0 & 0 & 0 & 0 \\
+    0 & 0 & 1 & 0 \\
+    0 & 1 & 0 & 0 \\
+    0 & 1 & 1 & 0 \\
+    1 & 0 & 0 & 0 \\
+    1 & 0 & 1 & 0 \\
+    1 & 1 & 0 & 0 \\
+    1 & 1 & 1 & 1 \\
+\end{tabular}
+
+\begin{figure}[H]
+    \includesvg{circuitos/p1_ej5}
+\end{figure}
+
+\section{Ejercicio 6}
+
+\begin{tabular}{|c|c|c|x|}
+    $A$ & $B$ & $C$ & $F(A,B,C)$ \\
+    \hline
+    0 & 0 & 0 & 0 \\
+    0 & 0 & 1 & 0 \\
+    0 & 1 & 0 & 0 \\
+    0 & 1 & 1 & 1 \\
+    1 & 0 & 0 & 1 \\
+    1 & 0 & 1 & 1 \\
+    1 & 1 & 0 & 0 \\
+    1 & 1 & 1 & 1 \\
+\end{tabular}
+
+\emph{Nota: la tabla de verdad fue ordenada para una lectura más fácil.}
+
+\subsection{}
+
+$F(A,B,C) = \overline{A}.B.C + A.\overline{B}.\overline{C} + A.\overline{B}.C + A.B.C$
+
+La implementación literal requiere un total de 15 compuertas: 3 OR, 8 AND y 4 NOT.
+
+\subsection{}
+
+$F(A,B,C) = \overline{A}.B.C + A.\overline{B}.\overline{C} + A.\overline{B}.C + A.B.C = B.C(A + \overline{A}) + A.\overline{B}(\overline{C} + C) = B.C + A.\overline{B}$
+
+La implementación optimizada requiere un total de 4 compuertas: 1 OR, 2 AND y 1 NOT.
+
+\begin{tabular}{|c|c|c||c|x|c|}
+    $A$ & $B$ & $C$ & $B.C$ & $+$ & $A.\overline{B}$ \\
+    \hline
+    0 & 0 & 0 & 0 & 0 & 0 \\
+    0 & 0 & 1 & 0 & 0 & 0 \\
+    0 & 1 & 0 & 0 & 0 & 0 \\
+    0 & 1 & 1 & 1 & 1 & 0 \\
+    1 & 0 & 0 & 0 & 1 & 1 \\
+    1 & 0 & 1 & 0 & 1 & 1 \\
+    1 & 1 & 0 & 0 & 0 & 0 \\
+    1 & 1 & 1 & 1 & 1 & 0 \\
+\end{tabular}
+
+\begin{figure}[H]
+    \includesvg{circuitos/p1_ej6}
+\end{figure}
+
+\section{Ejercicio 7}
+
+Podemos plantear las siguientes fórmulas booleanas para cada una de las salidas.
+
+$
+s_0 = \overline{c_1}.\overline{c_0}.e_0 \\
+s_1 = \overline{c_1}.c_0.e_0 \\
+s_2 = c_1.\overline{c_0}.e_0 \\
+s_3 = c_1.c_0.e_0
+$
+
+En la primer tabla de verdad planteamos una columna para cada valor explícito de $e_0$. En la segunda tabla eliminamos esta columna y en cambio planteamos $e_0$ como el valor de salida cuando las líneas de control computan a 1 para esa fila. Es decir, dada la fórmula booleana para cada salida, primero vemos si el AND entre las 2 líneas de control daría 1, y solo en ese caso el resultado final va a ser determinado por $e_0$. En todos los otros casos, como el AND entre las líneas de control da 0, es indistinto el valor de $e_0$ y la salida va a ser siempre $0$.
+
+\begin{multicols*}{2}
+    \begin{tabular}{|c|c|c||c|c|c|c|}
+        $c_1$ & $c_0$ & $e_0$ & $s_0$ & $s_1$ & $s_2$ & $s_3$ \\
+        \hline
+        0 & 0 & 0 & 0 & 0 & 0 & 0 \\
+        0 & 1 & 0 & 0 & 0 & 0 & 0 \\
+        1 & 0 & 0 & 0 & 0 & 0 & 0 \\
+        1 & 1 & 0 & 0 & 0 & 0 & 0 \\
+        0 & 0 & 1 & 1 & 0 & 0 & 0 \\
+        0 & 1 & 1 & 0 & 1 & 0 & 0 \\
+        1 & 0 & 1 & 0 & 0 & 1 & 0 \\
+        1 & 1 & 1 & 0 & 0 & 0 & 1 \\
+    \end{tabular}
+
+    \begin{tabular}{|c|c||c|c|c|c|}
+        $c_1$ & $c_0$ & $s_0$ & $s_1$ & $s_2$ & $s_3$ \\
+        \hline
+        0 & 0 & $e_0$ & 0 & 0 & 0 \\
+        0 & 1 & 0 & $e_0$ & 0 & 0 \\
+        1 & 0 & 0 & 0 & $e_0$ & 0 \\
+        1 & 1 & 0 & 0 & 0 & $e_0$ \\
+    \end{tabular}
+\end{multicols*}
+
+\begin{figure}[H]
+    \includesvg{circuitos/p1_ej7}
 \end{figure}
 
 \end{document}
