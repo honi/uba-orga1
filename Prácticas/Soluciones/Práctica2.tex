@@ -300,6 +300,8 @@ La implementación optimizada requiere un total de 4 compuertas: 1 OR, 2 AND y 1
     \includesvg{circuitos/p1_ej6}
 \end{figure}
 
+\pagebreak
+
 \section{Ejercicio 7}
 
 En la primer tabla de verdad planteamos una columna para cada valor explícito de $e_0$. En la segunda tabla eliminamos esta columna y en cambio planteamos $e_0$ como el valor de salida cuando las líneas de control computan a 1 para esa fila. Es decir, dada la fórmula booleana para cada salida, primero vemos si el AND entre las 2 líneas de control daría 1, y solo en ese caso el resultado final va a ser determinado por $e_0$. En todos los otros casos, como el AND entre las líneas de control da 0, es indistinto el valor de $e_0$ y la salida va a ser siempre $0$.
@@ -328,8 +330,6 @@ En la primer tabla de verdad planteamos una columna para cada valor explícito d
     \end{tabular}
 \end{multicols}
 
-\pagebreak
-
 Podemos plantear las siguientes fórmulas booleanas para cada una de las salidas.
 
 $
@@ -345,6 +345,8 @@ $
 \begin{figure}[H]
     \includesvg{circuitos/p1_ej7}
 \end{figure}
+
+\pagebreak
 
 \section{Ejercicio 8}
 
@@ -365,6 +367,33 @@ $s_0 = \overline{e_0}.e_1.\overline{e_2}.\overline{e_3} + \overline{e_0}.\overli
 
 \begin{figure}[H]
     \includesvg{circuitos/p1_ej8}
+\end{figure}
+
+\pagebreak
+
+\section{Ejercicio 9}
+
+\begin{tabular}{|c|c||c|c|c|c|}
+    $e_1$ & $e_0$ & $s_3$ & $s_2$ & $s_1$ & $s_0$ \\
+    \hline
+    0 & 0 & 0 & 0 & 0 & 1 \\
+    0 & 1 & 0 & 0 & 1 & 0 \\
+    1 & 0 & 0 & 1 & 0 & 0 \\
+    1 & 1 & 1 & 0 & 0 & 0 \\
+\end{tabular}
+
+$
+s_3 = e_1.e_0
+\hspace{2em}
+s_2 = e_1.\overline{e_0}
+\hspace{2em}
+s_1 = \overline{e_1}.e_0
+\hspace{2em}
+s_0 = \overline{e_1}.\overline{e_0}
+$
+
+\begin{figure}[H]
+    \includesvg{circuitos/p1_ej9}
 \end{figure}
 
 \end{document}
