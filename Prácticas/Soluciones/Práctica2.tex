@@ -269,7 +269,7 @@ Resuelto en el ejercicio 3.
     1 & 1 & 1 & 1 \\
 \end{tabular}
 
-\emph{Nota: la tabla de verdad fue ordenada para una lectura más fácil.}
+\emph{Nota: La tabla de verdad fue ordenada para una lectura más fácil.}
 
 \subsection{}
 
@@ -302,18 +302,9 @@ La implementación optimizada requiere un total de 4 compuertas: 1 OR, 2 AND y 1
 
 \section{Ejercicio 7}
 
-Podemos plantear las siguientes fórmulas booleanas para cada una de las salidas.
-
-$
-s_0 = \overline{c_1}.\overline{c_0}.e_0 \\
-s_1 = \overline{c_1}.c_0.e_0 \\
-s_2 = c_1.\overline{c_0}.e_0 \\
-s_3 = c_1.c_0.e_0
-$
-
 En la primer tabla de verdad planteamos una columna para cada valor explícito de $e_0$. En la segunda tabla eliminamos esta columna y en cambio planteamos $e_0$ como el valor de salida cuando las líneas de control computan a 1 para esa fila. Es decir, dada la fórmula booleana para cada salida, primero vemos si el AND entre las 2 líneas de control daría 1, y solo en ese caso el resultado final va a ser determinado por $e_0$. En todos los otros casos, como el AND entre las líneas de control da 0, es indistinto el valor de $e_0$ y la salida va a ser siempre $0$.
 
-\begin{multicols*}{2}
+\begin{multicols}{2}
     \begin{tabular}{|c|c|c||c|c|c|c|}
         $c_1$ & $c_0$ & $e_0$ & $s_0$ & $s_1$ & $s_2$ & $s_3$ \\
         \hline
@@ -335,10 +326,45 @@ En la primer tabla de verdad planteamos una columna para cada valor explícito d
         1 & 0 & 0 & 0 & $e_0$ & 0 \\
         1 & 1 & 0 & 0 & 0 & $e_0$ \\
     \end{tabular}
-\end{multicols*}
+\end{multicols}
+
+\pagebreak
+
+Podemos plantear las siguientes fórmulas booleanas para cada una de las salidas.
+
+$
+s_0 = \overline{c_1}.\overline{c_0}.e_0
+\hspace{2em}
+s_1 = \overline{c_1}.c_0.e_0
+\hspace{2em}
+s_2 = c_1.\overline{c_0}.e_0
+\hspace{2em}
+s_3 = c_1.c_0.e_0
+$
 
 \begin{figure}[H]
     \includesvg{circuitos/p1_ej7}
+\end{figure}
+
+\section{Ejercicio 8}
+
+\begin{tabular}{|c|c|c|c||c|c|}
+    $e_0$ & $e_1$ & $e_2$ & $e_3$ & $s_1$ & $s_0$ \\
+    \hline
+    1 & 0 & 0 & 0 & 0 & 0 \\
+    0 & 1 & 0 & 0 & 0 & 1 \\
+    0 & 0 & 1 & 0 & 1 & 0 \\
+    0 & 0 & 0 & 1 & 1 & 1 \\
+\end{tabular}
+
+$s_1 = \overline{e_0}.\overline{e_1}.e_2.\overline{e_3} + \overline{e_0}.\overline{e_1}.\overline{e_2}.e_3$
+
+$s_0 = \overline{e_0}.e_1.\overline{e_2}.\overline{e_3} + \overline{e_0}.\overline{e_1}.\overline{e_2}.e_3$
+
+\emph{Nota: Consideramos $s_1$ como el bit más significativo de la representación binaria del número $i$.}
+
+\begin{figure}[H]
+    \includesvg{circuitos/p1_ej8}
 \end{figure}
 
 \end{document}
