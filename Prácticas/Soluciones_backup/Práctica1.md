@@ -151,8 +151,6 @@ d)
 
 ## Ejercicio 2
 
-Esto está mal, tengo que corregirlo.
-
 ```
   100001₂
 + 011110₂

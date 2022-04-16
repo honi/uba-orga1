@@ -1,27 +1,10 @@
-\input{Algo1Macros}
-\usepackage{caratula}
-\usepackage{enumerate}
-\usepackage{hyperref}
-\usepackage{xcolor,colortbl}
-\usepackage{listings}
-\usepackage{multicol}
+\input{Template}
 
-\decimalpoint
-\setlength{\parindent}{0em}
-\setlength{\parskip}{0.5em}
-\hypersetup{colorlinks=true, linkcolor=black, urlcolor=blue}
-\setcounter{tocdepth}{3}
-\lstset{basicstyle=\ttfamily, mathescape}
-\newcolumntype{x}{>{\columncolor[HTML]{FFF2CC}}c}
-\renewcommand{\thesubsection}{\thesection.\alph{subsection}}
+\title{Organización del Computador 1}
+\author{Práctica 1}
+\date{1er cuatrimestre 2022}
 
 \begin{document}
-
-\titulo{Práctica 1}
-\subtitulo{Representación de la información}
-\fecha{1er cuatrimestre 2022}
-\materia{Organización del Computador 1}
-\integrante{Jonathan Bekenstein}{348/11}{jbekenstein@dc.uba.ar}
 
 \maketitle
 \tableofcontents
@@ -128,8 +111,6 @@ $\implies$ 1023$_{10}$ = 13043$_5$
 
 \subsection{}
 
-\emph{Nota: a la derecha del igual se interpretan todos los números en base 10.}
-
 \begin{lstlisting}
 1111$_2$ = (1 $\times$ 2$^3$) + (1 $\times$ 2$^2$) + (1 $\times$ 2$^1$) + (1 $\times$ 2${^0}$)
 = 8 + 4 + 2 + 1
@@ -154,7 +135,8 @@ CAFE$_{16}$ = (12 $\times$ 16$^3$) + (10 $\times$ 16$^2$) + (15 $\times$ 16$^1$)
 = 51966
 \end{lstlisting}
 
-\pagebreak
+\emph{Nota: a la derecha del igual se interpretan todos los números en base 10.}
+
 \subsection{}
 
 \begin{lstlisting}
@@ -188,5 +170,335 @@ $\implies$ BABA$_{13}$ = 26010$_{10}$ = 320230$_6$
 \end{lstlisting}
 
 \section{Ejercicio 2}
+
+Consideramos que hubo acarreo en la operación cuando hay acarreo en la suma del bit más significativo. En estos casos es cuando el número ya no puede ser representado con el sistema de precisión fija.
+
+\begin{multicols}{5}
+
+\begin{lstlisting}
+
+  100001$_2$
++ 011110$_2$
+---------
+  111111$_2$
+\end{lstlisting}
+No hubo acarreo.
+
+\columnbreak
+
+\begin{lstlisting}
+  111111
+   100001$_2$
++  011111$_2$
+----------
+  1000000$_2$
+\end{lstlisting}
+Hubo acarreo.
+
+\columnbreak
+
+\begin{lstlisting}
+  1111
+  01111$_2$
++ 01111$_2$
+--------
+  11110$_2$
+\end{lstlisting}
+No hubo acarreo.
+
+\columnbreak
+
+\begin{lstlisting}
+
+  9999$_{16}$
++ 1111$_{16}$
+--------
+  AAAA$_{16}$
+\end{lstlisting}
+No hubo acarreo.
+
+\columnbreak
+
+\begin{lstlisting}
+  1 1
+   F0F0$_{16}$
++  F0CA$_{16}$
+---------
+  1E1BA$_{16}$
+\end{lstlisting}
+Hubo acarreo.
+
+\end{multicols}
+
+\section{Ejercicio 3}
+
+No puede haber acarreo mayor a 1. \emph{Demostración pendiente.}
+
+\section{Ejercicio 4}
+
+En base $b$ con $k$ dígitos, el número más grande que se puede representar es $b^k - 1$. Consideremos 2 números tales que $n = m = b^k - 1$. Luego, $n \times m = (b^k - 1) \times (b^k - 1) = (b^k - 1)^2 = b^{2k} - 2b^k + 1$.
+
+Queremos saber si este número se puede representar con $2k$ dígitos. Es decir, si es menor o igual que $b^{2k} - 1$, el número más grande que se puede representar con $2k$ dígitos.
+
+$b^{2k} - 2b^k + 1 \leq b^{2k} - 1 \iff b^k \geq 1$ lo cual es verdadero ya que $k \geq 0$.
+
+\section{Ejercicio 5}
+
+\begin{tabular}{l|l|l}
+signo+magnitud & complemento a 2 & sin signo \\
+\hline
+
+\begin{lstlisting}
+0$_{10}$ = (0000 0000)$_2$
+\end{lstlisting}
+&
+\begin{lstlisting}
+0$_{10}$ = (0000 0000)$_2$
+\end{lstlisting}
+&
+\\
+
+\begin{lstlisting}
+-1$_{10}$ = (1000 0001)$_2$
+\end{lstlisting}
+&
+\begin{lstlisting}
+-1$_{10}$ = (1111 1111)$_2$
+\end{lstlisting}
+&
+\\
+
+\begin{lstlisting}
+-1$_{10}$ = (1000 0000 0000 0001)$_2$
+\end{lstlisting}
+&
+\begin{lstlisting}
+-1$_{10}$ = (1111 1111 1111 1111)$_2$
+\end{lstlisting}
+&
+\\
+
+&
+\begin{lstlisting}
+255$_{10}$ = (0000 0000 1111 1111)$_2$
+\end{lstlisting}
+&
+\begin{lstlisting}
+255$_{10}$ = (1111 1111)$_2$
+\end{lstlisting}
+\\
+
+&
+\begin{lstlisting}
+-128$_{10}$ = (1000 0000)$_2$
+\end{lstlisting}
+&
+\\
+
+&
+\begin{lstlisting}
+-128$_{10}$ = (1111 1111 1000 0000)$_2$
+\end{lstlisting}
+&
+\\
+
+&
+\begin{lstlisting}
+128$_{10}$ = (0000 0000 1000 0000)$_2$
+\end{lstlisting}
+&
+\begin{lstlisting}
+128$_{10}$ = (1000 0000)$_2$
+\end{lstlisting}
+\\
+
+\end{tabular}
+
+\section{Ejercicio 6}
+
+\begin{multicols}{3}
+\textbf{Numerales dados}
+\begin{lstlisting}
+r = 1011 1111$_2$
+s = 1000 0000$_2$
+t = 1111 1111$_2$
+\end{lstlisting}
+
+\columnbreak
+
+\textbf{Complemento a 2}
+\begin{lstlisting}
+r = -65$_{10}$
+s = -128$_{10}$
+t = -1$_{10}$
+\end{lstlisting}
+
+\columnbreak
+
+\textbf{Signo+magnitud}
+\begin{lstlisting}
+r = -63$_{10}$
+s = 0$_{10}$
+t = -127$_{10}$
+\end{lstlisting}
+\end{multicols}
+
+\section{Ejercicio 7}
+
+Representación en complemento a 2 con 4 bits:
+
+\begin{lstlisting}
+2$_{10}$  = 0010$_2$
+-5$_{10}$ = 1011$_2$
+0$_{10}$  = 0000$_2$
+\end{lstlisting}
+
+\subsection{}
+
+Bits invertidos en el mismo sistema:
+
+\begin{lstlisting}
+1101$_2$ = -3$_{10}$
+0100$_2$ = 4$_{10}$
+1111$_2$ = -1$_{10}$
+\end{lstlisting}
+
+\subsection{}
+
+Dada la representación de un número en complemento a 2, para obtener la representación de su inverso aditivo (también en complemento a 2) podemos seguir estos pasos:
+
+\begin{enumerate}
+  \item Invertir todos los bits.
+  \item Sumamos 1 e ignoramos el overflow (si es que hay).
+\end{enumerate}
+
+\section{Ejercicio 8}
+
+\begin{table}[ht]
+  \ttfamily
+  \setlength\tabcolsep{5pt}
+  \begin{tabular}{|c|cccc|cccc|cccc|cccc|cccc|cccc|cccc|cccc|}
+  \hline
+    & \multicolumn{4}{c|}{-4}                                                                                                      & \multicolumn{4}{c|}{-3}                                                                                                      & \multicolumn{4}{c|}{-2}                                                                                                                              & \multicolumn{4}{c|}{-1}                                                                                                                              & \multicolumn{4}{c|}{0}                                                                                                                               & \multicolumn{4}{c|}{1}                                                                                                                               & \multicolumn{4}{c|}{2}                                                                                                       & \multicolumn{4}{c|}{3}                                                                                                       \\ \hline
+  2 & \multicolumn{4}{c|}{\cellcolor[HTML]{C0C0C0}overflow}                                                                        & \multicolumn{4}{c|}{\cellcolor[HTML]{C0C0C0}overflow}                                                                        & \multicolumn{1}{c|}{\cellcolor[HTML]{C0C0C0}-} & \multicolumn{1}{c|}{\cellcolor[HTML]{C0C0C0}-} & \multicolumn{1}{c|}{\cellcolor[HTML]{EFEFEF}1} & 0 & \multicolumn{1}{c|}{\cellcolor[HTML]{C0C0C0}-} & \multicolumn{1}{c|}{\cellcolor[HTML]{C0C0C0}-} & \multicolumn{1}{c|}{\cellcolor[HTML]{EFEFEF}1} & 1 & \multicolumn{1}{c|}{\cellcolor[HTML]{C0C0C0}-} & \multicolumn{1}{c|}{\cellcolor[HTML]{C0C0C0}-} & \multicolumn{1}{c|}{\cellcolor[HTML]{EFEFEF}0} & 0 & \multicolumn{1}{c|}{\cellcolor[HTML]{C0C0C0}-} & \multicolumn{1}{c|}{\cellcolor[HTML]{C0C0C0}-} & \multicolumn{1}{c|}{\cellcolor[HTML]{EFEFEF}0} & 1 & \multicolumn{4}{c|}{\cellcolor[HTML]{C0C0C0}overflow}                                                                        & \multicolumn{4}{c|}{\cellcolor[HTML]{C0C0C0}overflow}                                                                        \\ \hline
+  3 & \multicolumn{1}{c|}{\cellcolor[HTML]{C0C0C0}-} & \multicolumn{1}{c|}{\cellcolor[HTML]{EFEFEF}1} & \multicolumn{1}{c|}{0} & 0 & \multicolumn{1}{c|}{\cellcolor[HTML]{C0C0C0}-} & \multicolumn{1}{c|}{\cellcolor[HTML]{EFEFEF}1} & \multicolumn{1}{c|}{0} & 1 & \multicolumn{1}{c|}{\cellcolor[HTML]{C0C0C0}-} & \multicolumn{1}{c|}{\cellcolor[HTML]{EFEFEF}1} & \multicolumn{1}{c|}{\cellcolor[HTML]{EFEFEF}1} & 0 & \multicolumn{1}{c|}{\cellcolor[HTML]{C0C0C0}-} & \multicolumn{1}{c|}{\cellcolor[HTML]{EFEFEF}1} & \multicolumn{1}{c|}{\cellcolor[HTML]{EFEFEF}1} & 1 & \multicolumn{1}{c|}{\cellcolor[HTML]{C0C0C0}-} & \multicolumn{1}{c|}{\cellcolor[HTML]{EFEFEF}0} & \multicolumn{1}{c|}{\cellcolor[HTML]{EFEFEF}0} & 0 & \multicolumn{1}{c|}{\cellcolor[HTML]{C0C0C0}-} & \multicolumn{1}{c|}{\cellcolor[HTML]{EFEFEF}0} & \multicolumn{1}{c|}{\cellcolor[HTML]{EFEFEF}0} & 1 & \multicolumn{1}{c|}{\cellcolor[HTML]{C0C0C0}-} & \multicolumn{1}{c|}{\cellcolor[HTML]{EFEFEF}0} & \multicolumn{1}{c|}{1} & 0 & \multicolumn{1}{c|}{\cellcolor[HTML]{C0C0C0}-} & \multicolumn{1}{c|}{\cellcolor[HTML]{EFEFEF}0} & \multicolumn{1}{c|}{1} & 1 \\ \hline
+  4 & \multicolumn{1}{c|}{\cellcolor[HTML]{EFEFEF}1} & \multicolumn{1}{c|}{\cellcolor[HTML]{EFEFEF}1} & \multicolumn{1}{c|}{0} & 0 & \multicolumn{1}{c|}{\cellcolor[HTML]{EFEFEF}1} & \multicolumn{1}{c|}{\cellcolor[HTML]{EFEFEF}1} & \multicolumn{1}{c|}{0} & 1 & \multicolumn{1}{c|}{\cellcolor[HTML]{EFEFEF}1} & \multicolumn{1}{c|}{\cellcolor[HTML]{EFEFEF}1} & \multicolumn{1}{c|}{\cellcolor[HTML]{EFEFEF}1} & 0 & \multicolumn{1}{c|}{\cellcolor[HTML]{EFEFEF}1} & \multicolumn{1}{c|}{\cellcolor[HTML]{EFEFEF}1} & \multicolumn{1}{c|}{\cellcolor[HTML]{EFEFEF}1} & 1 & \multicolumn{1}{c|}{\cellcolor[HTML]{EFEFEF}0} & \multicolumn{1}{c|}{\cellcolor[HTML]{EFEFEF}0} & \multicolumn{1}{c|}{\cellcolor[HTML]{EFEFEF}0} & 0 & \multicolumn{1}{c|}{\cellcolor[HTML]{EFEFEF}0} & \multicolumn{1}{c|}{\cellcolor[HTML]{EFEFEF}0} & \multicolumn{1}{c|}{\cellcolor[HTML]{EFEFEF}0} & 1 & \multicolumn{1}{c|}{\cellcolor[HTML]{EFEFEF}0} & \multicolumn{1}{c|}{\cellcolor[HTML]{EFEFEF}0} & \multicolumn{1}{c|}{1} & 0 & \multicolumn{1}{c|}{\cellcolor[HTML]{EFEFEF}0} & \multicolumn{1}{c|}{\cellcolor[HTML]{EFEFEF}0} & \multicolumn{1}{c|}{1} & 1 \\ \hline
+  \end{tabular}
+\end{table}
+
+\section{Ejercicio 9}
+
+Consideramos que hubo acarreo en la operación cuando hay acarreo en la suma del bit más significativo. Este acarreo puede o no ser overflow. Una regla sencilla para detectar overflow es fijarse si el acarreo que entró al bit más significativo es distinto al acarreo que salió. En ese caso hubo overflow.
+
+\textbf{No se produzca acarreo ni overflow}
+\begin{lstlisting}
+   0001$_2$ = 1$_{10}$
++  0010$_2$ = 2$_{10}$
+--------
+   0011$_2$ = 3$_{10}$
+\end{lstlisting}
+
+\textbf{Se produzca acarreo pero no overflow}
+\begin{lstlisting}
+  111
+   0111$_2$ = 7$_{10}$
++  1110$_2$ = -2$_{10}$
+--------
+   0101$_2$ = 5$_{10}$
+\end{lstlisting}
+
+\textbf{Se produzca acarreo y overflow}
+\begin{lstlisting}
+  1 11
+   1011$_2$ = -5$_{10}$
++  1011$_2$ = -5$_{10}$
+--------
+   0110$_2$ = 6$_{10}$ $\neq$ -10$_{10}$
+\end{lstlisting}
+
+\textbf{No se produzca acarreo pero sí overflow}
+\begin{lstlisting}
+   1 1
+   0101$_2$ = 5$_{10}$
++  0101$_2$ = 5$_{10}$
+--------
+   1010$_2$ = -6$_{10}$ $\neq$ 10$_{10}$
+\end{lstlisting}
+
+\textbf{Se produzca acarreo y el resultado sea cero}
+\begin{lstlisting}
+  1111
+   1111$_2$ = -1$_{10}$
++  0001$_2$ = 1$_{10}$
+--------
+   0000$_2$ = 0$_{10}$
+\end{lstlisting}
+
+\textbf{No se produzca acarreo y el resultado sea cero}
+\begin{lstlisting}
+   0000$_2$ = 0$_{10}$
++  0000$_2$ = 0$_{10}$
+--------
+   0000$_2$ = 0$_{10}$
+\end{lstlisting}
+
+\textbf{El resultado sea negativo y se produzca overflow}
+\begin{lstlisting}
+   1
+   0100$_2$ = 4$_{10}$
++  0100$_2$ = 4$_{10}$
+--------
+   1000$_2$ = -8$_{10}$ $\neq$ 8$_{10}$
+\end{lstlisting}
+
+\textbf{El resultado sea negativo y no se produzca overflow}
+\begin{lstlisting}
+   0001$_2$ = 1$_{10}$
++  1110$_2$ = -2$_{10}$
+--------
+   1111$_2$ = -1$_{10}$
+\end{lstlisting}
+
+\section{Ejercicio 10}
+
+Rangos de representación con $k$ dígitos:
+
+\begin{itemize}
+  \item Complemento a 2: $[-2^{k-1}, 2^{k-1} - 1]$
+  \item Signo+magnitud: $[-2^{k-1} + 1, 2^{k-1} - 1]$
+\end{itemize}
+
+Podemos observar que en complemento a 2 tenemos 1 número más que podemos representar: $-2^{k-1}$.
+
+\section{Ejercicio 11}
+
+Utilizando el sistema de representación complemento a 2, podemos reasignar la representación del $0$, es decir, el numeral compuesto de todos 0s, al número $2^{k-1}$.
+
+De esta forma el rango de representación resulta $[-2^{k-1}, 2^{k-1}] - \{0\}$. Si bien no tenemos forma de representar el $0$, podemos representar exactamente $2^{k-1}$ números positivos y $2^{k-1}$ números negativos.
+
+El total de números representables resulta $2^{k-1} + 2^{k-1} = 2^k$ y esta es exactamente la cantidad de numerales que se pueden formar con $k$ dígitos, por lo tanto la representación es biyectiva.
+
+\section{Ejercicio 12}
+
+La afirmación es verdadera. Al tratarse de cadenas binarias, con $k$ dígitos podemos obtener $2^k$ numerales distintos. Observemos que este número es par. Luego, si asignamos uno de estos numerales al $0$, nos quedan $2^k - 1$ numerales para distribuir entre los números positivos y negativos. Como $2^k - 1$ es impar, no podemos dividir esta cantidad en exactamente 2 partes iguales, y por lo tanto siempre va a resultar que vamos a tener 1 numeral extra, ya sea para los positivos o los negativos.
+
+\section{Ejercicio 13}
+
+\emph{Pendiente}
+
+\section{Ejercicio 14}
+
+Rango de representación: $[-2^{16}, 2^{16} - 1] = [-65536, 65535]$. Reordenamos los términos para que las sumas parciales cada 2 términos no se vayan fueran del rango de representación.
+
+\begin{lstlisting}
+  7744$_{16}$ = (0111 0111 0100 0100)$_2$ = 30532$_{10}$
++ 88BD$_{16}$ = (1000 1000 1011 1101)$_2$ = -30531$_{10}$
++ 6788$_{16}$ = (0110 0111 1000 1000)$_2$ = 26504$_{10}$
++ 9879$_{16}$ = (1001 1000 0111 1001)$_2$ = -26503$_{10}$
++ 5499$_{16}$ = (0101 0100 1001 1001)$_2$ = 21657$_{10}$
++ AB68$_{16}$ = (1010 1011 0110 1000)$_2$ = -21656$_{10}$
+-------------------------------------------
+  0003$_{16}$ = (0000 0000 0000 0011)$_2$ = 3$_{10}$
+\end{lstlisting}
 
 \end{document}

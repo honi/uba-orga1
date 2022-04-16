@@ -1,0 +1,42 @@
+\documentclass{article}
+
+\usepackage[utf8]{inputenc}
+\usepackage[spanish]{babel} % Agregar es-nodecimaldot si hay problemas con el separador de decimales y de miles.
+\usepackage{amsmath} % Agregar cuando se necesiten: amscd, amssymb, amsthm, latexsym
+\usepackage{enumerate}
+\usepackage{graphicx}
+\usepackage{multicol}
+\usepackage{svg}
+
+% Tamaño de hoja y márgenes
+\usepackage[a4paper,top=1cm,bottom=2cm,left=1cm,right=1cm]{geometry}
+\setlength{\parindent}{0em}
+\setlength{\parskip}{1em}
+\setlength{\intextsep}{1em}
+\setlength{\abovedisplayskip}{1em}
+\setlength{\belowdisplayskip}{1em}
+\setlength{\abovedisplayshortskip}{1em}
+\setlength{\belowdisplayshortskip}{1em}
+
+% Numeración de las secciones y el índice
+\setcounter{tocdepth}{1}
+\renewcommand{\thesubsection}{\thesection.\alph{subsection}}
+
+% Color de los links externos
+\usepackage{hyperref}
+\hypersetup{colorlinks=true, linkcolor=black, urlcolor=blue}
+
+% Permite math mode adentro de listings (bloques de "código")
+\usepackage{listings}
+\lstset{basicstyle=\ttfamily, mathescape}
+
+% Alias para íconos/símbolos
+\usepackage{pifont}
+\newcommand{\xmark}{\color{purple}\ding{54}}
+
+% Otros alias
+\newcommand{\xor}{\oplus}
+
+% Columna "x" tiene fondo amarillo
+\usepackage{colortbl}
+\newcolumntype{x}{>{\columncolor[HTML]{FFF2CC}}c}

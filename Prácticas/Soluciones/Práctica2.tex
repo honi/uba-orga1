@@ -1,33 +1,10 @@
-\input{Algo1Macros}
-\usepackage{caratula}
-\usepackage{enumerate}
-\usepackage{hyperref}
-\usepackage{xcolor,colortbl}
-\usepackage{svg}
-\usepackage{pifont}
+\input{Template}
 
-\setlength{\parindent}{0em}
-\setlength{\parskip}{1em}
-\setlength{\intextsep}{1em}
-\setlength{\abovedisplayskip}{1em}
-\setlength{\belowdisplayskip}{1em}
-\setlength{\abovedisplayshortskip}{1em}
-\setlength{\belowdisplayshortskip}{1em}
-\decimalpoint
-\setcounter{tocdepth}{3}
-\hypersetup{colorlinks=true, linkcolor=black, urlcolor=blue}
-\newcolumntype{x}{>{\columncolor[HTML]{FFF2CC}}c}
-\renewcommand{\thesubsection}{\thesection.\alph{subsection}}
-\newcommand{\xor}{\oplus}
-\newcommand{\xmark}{\color{purple}\ding{54}}
+\title{Organización del Computador 1}
+\author{Práctica 2}
+\date{1er cuatrimestre 2022}
 
 \begin{document}
-
-\titulo{Práctica 2}
-\subtitulo{Lógica Digital}
-\fecha{1er cuatrimestre 2022}
-\materia{Organización del Computador 1}
-\integrante{Jonathan Bekenstein}{348/11}{jbekenstein@dc.uba.ar}
 
 \maketitle
 \tableofcontents
@@ -125,7 +102,7 @@ $p|p = \overline{p}$
     1 & 0 & 0 \\
 \end{tabular}
 
-\begin{figure}[H]
+\begin{figure}[ht]
     \includesvg{circuitos/NAND_NOT}
 \end{figure}
 
@@ -144,7 +121,7 @@ $(p|q)|(p|q) = p.q$
     1 & 1 & 0 & 1 & 1 \\
 \end{tabular}
 
-\begin{figure}[H]
+\begin{figure}[ht]
     \includesvg{circuitos/NAND_AND}
 \end{figure}
 
@@ -161,7 +138,7 @@ $(p|p)|(q|q) = \overline{p}|\overline{q} = \overline{\overline{p}.\overline{q}} 
     1 & 1 & 0 & 1 & 0 & 1 \\
 \end{tabular}
 
-\begin{figure}[H]
+\begin{figure}[ht]
     \includesvg{circuitos/NAND_OR}
 \end{figure}
 
@@ -193,7 +170,7 @@ $p\downarrow p = \overline{p}$
     1 & 0 & 0 \\
 \end{tabular}
 
-\begin{figure}[H]
+\begin{figure}[ht]
     \includesvg{circuitos/NOR_NOT}
 \end{figure}
 
@@ -210,7 +187,7 @@ $(p\downarrow p)\downarrow(q\downarrow q) = \overline{p}\downarrow\overline{q} =
     1 & 1 & 0 & 1 & 0 & 1 \\
 \end{tabular}
 
-\begin{figure}[H]
+\begin{figure}[ht]
     \includesvg{circuitos/NOR_AND}
 \end{figure}
 
@@ -227,7 +204,7 @@ $(p\downarrow q)\downarrow(p\downarrow q) = (\overline{p+q}) \downarrow (\overli
     1 & 1 & 0 & 1 & 1 \\
 \end{tabular}
 
-\begin{figure}[H]
+\begin{figure}[ht]
     \includesvg{circuitos/NOR_OR}
 \end{figure}
 
@@ -250,7 +227,7 @@ Resuelto en el ejercicio 3.
     1 & 1 & 1 & 1 \\
 \end{tabular}
 
-\begin{figure}[H]
+\begin{figure}[ht]
     \includesvg{circuitos/p1_ej5}
 \end{figure}
 
@@ -296,7 +273,7 @@ La implementación optimizada requiere un total de 4 compuertas: 1 OR, 2 AND y 1
     1 & 1 & 1 & 1 & 1 & 0 \\
 \end{tabular}
 
-\begin{figure}[H]
+\begin{figure}[ht]
     \includesvg{circuitos/p1_ej6}
 \end{figure}
 
@@ -342,7 +319,7 @@ s_2 = c_1.\overline{c_0}.e_0
 s_3 = c_1.c_0.e_0
 $
 
-\begin{figure}[H]
+\begin{figure}[ht]
     \includesvg{circuitos/p1_ej7}
 \end{figure}
 
@@ -365,7 +342,7 @@ $s_0 = \overline{e_0}.e_1.\overline{e_2}.\overline{e_3} + \overline{e_0}.\overli
 
 \emph{Nota: Consideramos $s_1$ como el bit más significativo de la representación binaria del número $i$.}
 
-\begin{figure}[H]
+\begin{figure}[ht]
     \includesvg{circuitos/p1_ej8}
 \end{figure}
 
@@ -392,7 +369,7 @@ s_1 = \overline{e_1}.e_0
 s_0 = \overline{e_1}.\overline{e_0}
 $
 
-\begin{figure}[H]
+\begin{figure}[ht]
     \includesvg{circuitos/p1_ej9}
 \end{figure}
 
