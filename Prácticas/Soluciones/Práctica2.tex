@@ -103,7 +103,7 @@ $p|p = \overline{p}$
 \end{tabular}
 
 \begin{figure}[ht]
-    \includesvg{circuitos/NAND_NOT}
+    \includesvg{Circuitos/NAND_NOT}
 \end{figure}
 
 \subsubsection{AND}
@@ -122,7 +122,7 @@ $(p|q)|(p|q) = p.q$
 \end{tabular}
 
 \begin{figure}[ht]
-    \includesvg{circuitos/NAND_AND}
+    \includesvg{Circuitos/NAND_AND}
 \end{figure}
 
 \subsubsection{OR}
@@ -139,7 +139,7 @@ $(p|p)|(q|q) = \overline{p}|\overline{q} = \overline{\overline{p}.\overline{q}} 
 \end{tabular}
 
 \begin{figure}[ht]
-    \includesvg{circuitos/NAND_OR}
+    \includesvg{Circuitos/NAND_OR}
 \end{figure}
 
 \subsection{}
@@ -171,7 +171,7 @@ $p\downarrow p = \overline{p}$
 \end{tabular}
 
 \begin{figure}[ht]
-    \includesvg{circuitos/NOR_NOT}
+    \includesvg{Circuitos/NOR_NOT}
 \end{figure}
 
 \subsubsection{AND}
@@ -188,7 +188,7 @@ $(p\downarrow p)\downarrow(q\downarrow q) = \overline{p}\downarrow\overline{q} =
 \end{tabular}
 
 \begin{figure}[ht]
-    \includesvg{circuitos/NOR_AND}
+    \includesvg{Circuitos/NOR_AND}
 \end{figure}
 
 \subsubsection{OR}
@@ -205,7 +205,7 @@ $(p\downarrow q)\downarrow(p\downarrow q) = (\overline{p+q}) \downarrow (\overli
 \end{tabular}
 
 \begin{figure}[ht]
-    \includesvg{circuitos/NOR_OR}
+    \includesvg{Circuitos/NOR_OR}
 \end{figure}
 
 \section{Ejercicio 4}
@@ -228,7 +228,7 @@ Resuelto en el ejercicio 3.
 \end{tabular}
 
 \begin{figure}[ht]
-    \includesvg{circuitos/p1_ej5}
+    \includesvg{Circuitos/P2_EJ5}
 \end{figure}
 
 \section{Ejercicio 6}
@@ -274,58 +274,60 @@ La implementación optimizada requiere un total de 4 compuertas: 1 OR, 2 AND y 1
 \end{tabular}
 
 \begin{figure}[ht]
-    \includesvg{circuitos/p1_ej6}
+    \includesvg{Circuitos/P2_EJ6}
 \end{figure}
 
 \pagebreak
 
-\section{Ejercicio 7}
+\section{Ejercicio 7: demultiplexor}
 
-En la primer tabla de verdad planteamos una columna para cada valor explícito de $e_0$. En la segunda tabla eliminamos esta columna y en cambio planteamos $e_0$ como el valor de salida cuando las líneas de control computan a 1 para esa fila. Es decir, dada la fórmula booleana para cada salida, primero vemos si el AND entre las 2 líneas de control daría 1, y solo en ese caso el resultado final va a ser determinado por $e_0$. En todos los otros casos, como el AND entre las líneas de control da 0, es indistinto el valor de $e_0$ y la salida va a ser siempre $0$.
+En la primer tabla de verdad planteamos una columna para los valores explícitos de $e_0$. En la segunda tabla eliminamos esta columna y en cambio planteamos $e_0$ como el valor de salida cuando las líneas de control computan a 1 para esa fila. Es decir, dada la fórmula booleana para cada salida, primero vemos si el AND entre las 2 líneas de control daría 1, y solo en ese caso el resultado final va a ser determinado por $e_0$. En todos los otros casos, como el AND entre las líneas de control da 0, es indistinto el valor de $e_0$ y la salida va a ser siempre $0$.
 
 \begin{multicols}{2}
     \begin{tabular}{|c|c|c||c|c|c|c|}
-        $c_1$ & $c_0$ & $e_0$ & $s_0$ & $s_1$ & $s_2$ & $s_3$ \\
+        $c_1$ & $c_0$ & $e_0$ & $s_3$ & $s_2$ & $s_1$ & $s_0$ \\
         \hline
         0 & 0 & 0 & 0 & 0 & 0 & 0 \\
         0 & 1 & 0 & 0 & 0 & 0 & 0 \\
         1 & 0 & 0 & 0 & 0 & 0 & 0 \\
         1 & 1 & 0 & 0 & 0 & 0 & 0 \\
-        0 & 0 & 1 & 1 & 0 & 0 & 0 \\
-        0 & 1 & 1 & 0 & 1 & 0 & 0 \\
-        1 & 0 & 1 & 0 & 0 & 1 & 0 \\
-        1 & 1 & 1 & 0 & 0 & 0 & 1 \\
+        0 & 0 & 1 & 0 & 0 & 0 & 1 \\
+        0 & 1 & 1 & 0 & 0 & 1 & 0 \\
+        1 & 0 & 1 & 0 & 1 & 0 & 0 \\
+        1 & 1 & 1 & 1 & 0 & 0 & 0 \\
     \end{tabular}
 
     \begin{tabular}{|c|c||c|c|c|c|}
-        $c_1$ & $c_0$ & $s_0$ & $s_1$ & $s_2$ & $s_3$ \\
+        $c_1$ & $c_0$ & $s_3$ & $s_2$ & $s_1$ & $s_0$ \\
         \hline
-        0 & 0 & $e_0$ & 0 & 0 & 0 \\
-        0 & 1 & 0 & $e_0$ & 0 & 0 \\
-        1 & 0 & 0 & 0 & $e_0$ & 0 \\
-        1 & 1 & 0 & 0 & 0 & $e_0$ \\
+        0 & 0 & 0 & 0 & 0 & $e_0$ \\
+        0 & 1 & 0 & 0 & $e_0$ & 0 \\
+        1 & 0 & 0 & $e_0$ & 0 & 0 \\
+        1 & 1 & $e_0$ & 0 & 0 & 0 \\
     \end{tabular}
 \end{multicols}
 
 Podemos plantear las siguientes fórmulas booleanas para cada una de las salidas.
 
 $
-s_0 = \overline{c_1}.\overline{c_0}.e_0
-\hspace{2em}
-s_1 = \overline{c_1}.c_0.e_0
+s_3 = c_1.c_0.e_0
 \hspace{2em}
 s_2 = c_1.\overline{c_0}.e_0
 \hspace{2em}
-s_3 = c_1.c_0.e_0
+s_1 = \overline{c_1}.c_0.e_0
+\hspace{2em}
+s_0 = \overline{c_1}.\overline{c_0}.e_0
 $
 
 \begin{figure}[ht]
-    \includesvg{circuitos/p1_ej7}
+    \includesvg{Circuitos/Demultiplexor_v1}
 \end{figure}
 
 \pagebreak
 
-\section{Ejercicio 8}
+\section{Ejercicio 8: codificador}
+
+\subsection{}
 
 \begin{tabular}{|c|c|c|c||c|c|}
     $e_0$ & $e_1$ & $e_2$ & $e_3$ & $s_1$ & $s_0$ \\
@@ -343,12 +345,18 @@ $s_0 = \overline{e_0}.e_1.\overline{e_2}.\overline{e_3} + \overline{e_0}.\overli
 \emph{Nota: Consideramos $s_1$ como el bit más significativo de la representación binaria del número $i$.}
 
 \begin{figure}[ht]
-    \includesvg{circuitos/p1_ej8}
+    \includesvg{Circuitos/Codificador_v1}
 \end{figure}
 
 \pagebreak
 
-\section{Ejercicio 9}
+\subsection{}
+
+\pagebreak
+
+\section{Ejercicio 9: decodificador}
+
+\subsection{}
 
 \begin{tabular}{|c|c||c|c|c|c|}
     $e_1$ & $e_0$ & $s_3$ & $s_2$ & $s_1$ & $s_0$ \\
@@ -370,7 +378,13 @@ s_0 = \overline{e_1}.\overline{e_0}
 $
 
 \begin{figure}[ht]
-    \includesvg{circuitos/p1_ej9}
+    \includesvg{Circuitos/Decodificador}
+\end{figure}
+
+\subsection{}
+
+\begin{figure}[ht]
+    \includesvg{Circuitos/Demultiplexor_v2}
 \end{figure}
 
 \end{document}
