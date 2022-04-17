@@ -421,4 +421,40 @@ $
     \includesvg{Circuitos/Demultiplexor_v2}
 \end{figure}
 
+\pagebreak
+
+\section{Ejercicio 10: carry left shifter 3-4}
+
+\subsection{}
+
+$
+s_3 = c_0 . e_2
+\hspace{2em}
+s_2 = \overline{c_0} . e_2 + c_0 . e_1
+\hspace{2em}
+s_1 = \overline{c_0} . e_1 + c_0 . e_0
+\hspace{2em}
+s_0 = \overline{c_0} . e_0
+$
+
+\begin{figure}[ht]
+    \includesvg{Circuitos/CarryLeftShifter}
+\end{figure}
+
+\subsection{}
+
+El shift a la izquierda equivale a multiplicar por 2. El shift a la derecha equivale a la división entera por 2 (es decir, dividir por 2 redondeado hacia abajo).
+
+\begin{lstlisting}
+0110$_2$ = 6$_{10}$
+0110$_2$ $\ll$ 1 = 1100$_2$ = 12$_{10}$
+0110$_2$ $\gg$ 1 = 0011$_2$ = 3$_{10}$
+\end{lstlisting}
+
+\begin{lstlisting}
+0101$_2$ = 5$_{10}$
+0101$_2$ $\ll$ 1 = 1010$_2$ = 10$_{10}$
+0101$_2$ $\gg$ 1 = 0010$_2$ = 2$_{10}$
+\end{lstlisting}
+
 \end{document}
