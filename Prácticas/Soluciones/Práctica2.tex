@@ -457,4 +457,44 @@ El shift a la izquierda equivale a multiplicar por 2. El shift a la derecha equi
 0101$_2$ $\gg$ 1 = 0010$_2$ = 2$_{10}$
 \end{lstlisting}
 
+\pagebreak
+
+\section{Ejercicio 11: full adder}
+
+\subsection{}
+
+\begin{multicols}{2}
+    \begin{flalign*}
+        \text{suma}
+        &= \overline{A} . \overline{B} . C_{in} + \overline{A} . B . \overline{C_{in}} + A . \overline{B} . \overline{C_{in}} + A . B . C_{in} &&\\
+        &= (\overline{A} . \overline{B} + A . B) . C_{in} + (\overline{A} . B + A . \overline{B}) . \overline{C_{in}} &&\\
+        &= (\overline{A \xor B}) . C_{in} + (A \xor B) . \overline{C_{in}} &&\\
+        &= (A \xor B) \xor C_{in}
+    \end{flalign*}
+
+    \begin{flalign*}
+        C_{out}
+        &= \overline{A} . B . C_{in} + A . \overline{B} . C_{in} + A . B . \overline{C_{in}} + A . B . C_{in} &&\\
+        &= (\overline{A} . B + A . \overline{B}) . C_{in} + (\overline{C_{in}} + C_{in}) . A . B &&\\
+        &= (A \xor B) . C_{in} + A . B
+    \end{flalign*}
+\end{multicols}
+
+\begin{figure}[ht]
+    \includesvg{Circuitos/FullAdder}
+\end{figure}
+
+\subsection{}
+
+El retardo total del circuito será $max\{ \text{retardo}(\text{suma}), \text{retardo}(C_{out}) \}$. La salida suma utiliza 2 compuertas mientras que $C_{out}$ utiliza 4. Nos concentramos entonces en ver el retardo de $C_{out}$ para cada instante.
+
+\begin{enumerate}
+    \item Se activan las compuertas para las operaciones: $A \xor B$ y $A . B$
+    \item Se activa la compuerta para la operación AND: $(A \xor B) \boldsymbol{.} C_{in}$
+    \item Se activa la compuerta para la operación OR: $(A \xor B) . C_{in} \boldsymbol{+} A . B$
+\end{enumerate}
+
+
+Por lo tanto, el retardo total del circuito para producir todas su señales de salida es de $3t$.
+
 \end{document}
