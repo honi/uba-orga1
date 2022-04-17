@@ -459,13 +459,13 @@ El shift a la izquierda equivale a multiplicar por 2. El shift a la derecha equi
 
 \pagebreak
 
-\section{Ejercicio 11: full adder}
+\section{Ejercicio 11: full adder de 1 bit}
 
 \subsection{}
 
 \begin{multicols}{2}
     \begin{flalign*}
-        \text{suma}
+        S
         &= \overline{A} . \overline{B} . C_{in} + \overline{A} . B . \overline{C_{in}} + A . \overline{B} . \overline{C_{in}} + A . B . C_{in} &&\\
         &= (\overline{A} . \overline{B} + A . B) . C_{in} + (\overline{A} . B + A . \overline{B}) . \overline{C_{in}} &&\\
         &= (\overline{A \xor B}) . C_{in} + (A \xor B) . \overline{C_{in}} &&\\
@@ -481,12 +481,12 @@ El shift a la izquierda equivale a multiplicar por 2. El shift a la derecha equi
 \end{multicols}
 
 \begin{figure}[ht]
-    \includesvg{Circuitos/FullAdder}
+    \includesvg{Circuitos/FullAdder1bit}
 \end{figure}
 
 \subsection{}
 
-El retardo total del circuito será $max\{ \text{retardo}(\text{suma}), \text{retardo}(C_{out}) \}$. La salida suma utiliza 2 compuertas mientras que $C_{out}$ utiliza 4. Nos concentramos entonces en ver el retardo de $C_{out}$ para cada instante.
+El retardo total del circuito será $max\{ \text{retardo}(S), \text{retardo}(C_{out}) \}$. La salida $S$ utiliza 2 compuertas mientras que $C_{out}$ utiliza 4. Nos concentramos entonces en ver el retardo de $C_{out}$ para cada instante.
 
 \begin{enumerate}
     \item Se activan las compuertas para las operaciones: $A \xor B$ y $A . B$
@@ -496,5 +496,37 @@ El retardo total del circuito será $max\{ \text{retardo}(\text{suma}), \text{re
 
 
 Por lo tanto, el retardo total del circuito para producir todas su señales de salida es de $3t$.
+
+\pagebreak
+
+\section{Ejercicio 12: full adder de 4 bits}
+
+\subsection{}
+
+\begin{figure}[ht]
+    \includesvg[width=\textwidth]{Circuitos/FullAdder4bits_v2}
+\end{figure}
+
+\emph{Nota: Este circuito ya incluye los flags del item b.}
+
+\subsection{}
+
+\begin{itemize}
+    \item Negative: $N = S_3$
+    \item Overflow: $V = C_{in3} \xor C_{out3}$
+    \item Carry: $C = C_{out3}$
+    \item Zero: $Z = (S_0 \nor S_1) . (S_2 \nor S_3)$
+\end{itemize}
+
+\subsection{}
+
+Sí, el circuito funciona para sumar números codificados en notación sin signo. Pero habría que ajustar los flags de la siguiente forma:
+
+\begin{itemize}
+    \item Negative: no aplica ya que estamos sumando números sin signo
+    \item Overflow: se ignora
+    \item Carry: es el nuevo flag de overflow
+    \item Zero: sin cambios
+\end{itemize}
 
 \end{document}
