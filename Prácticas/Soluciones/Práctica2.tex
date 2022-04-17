@@ -344,13 +344,47 @@ $s_0 = \overline{e_0}.e_1.\overline{e_2}.\overline{e_3} + \overline{e_0}.\overli
 
 \emph{Nota: Consideramos $s_1$ como el bit más significativo de la representación binaria del número $i$.}
 
-\begin{figure}[ht]
-    \includesvg{Circuitos/Codificador_v1}
-\end{figure}
+\subsection{}
+
+Para determinar si el estado de la entrada es válido necesitamos que $v=1$ únicamente cuando hay una sola entrada en $1$.
+
+\begin{tabular}{|c|c|c|c||c|}
+    $e_0$ & $e_1$ & $e_2$ & $e_3$ & v \\
+    \hline
+    0 & 0 & 0 & 0 & 0 \\
+    0 & 0 & 0 & 1 & 1 \\
+    0 & 0 & 1 & 0 & 1 \\
+    0 & 0 & 1 & 1 & 0 \\
+    0 & 1 & 0 & 0 & 1 \\
+    0 & 1 & 0 & 1 & 0 \\
+    0 & 1 & 1 & 0 & 0 \\
+    0 & 1 & 1 & 1 & 0 \\
+    1 & 0 & 0 & 0 & 1 \\
+    1 & 0 & 0 & 1 & 0 \\
+    1 & 0 & 1 & 0 & 0 \\
+    1 & 0 & 1 & 1 & 0 \\
+    1 & 1 & 0 & 0 & 0 \\
+    1 & 1 & 0 & 1 & 0 \\
+    1 & 1 & 1 & 0 & 0 \\
+    1 & 1 & 1 & 1 & 0 \\
+\end{tabular}
+
+Traducimos la tabla de verdad a una fórmula booleana literal y simplificamos usando propiedades.
+\begin{flalign*}
+v &= e_0 . \overline{e_1} . \overline{e_2} . \overline{e_3} + \overline{e_0} . e_1 . \overline{e_2} . \overline{e_3} + \overline{e_0} . \overline{e_1} . e_2 . \overline{e_3} + \overline{e_0} . \overline{e_1} .\overline{e_2} . e_3 &&\\
+&= (e_0 . \overline{e_1} + \overline{e_0} . e_1) . \overline{e_2} . \overline{e_3} + \overline{e_0} . \overline{e_1} . (e_2 . \overline{e_3} + \overline{e_2} . e_3) &&\\
+&= (e_0 \xor e_1) . (e_2 \nor e_3) + (e_0 \nor e_1) . (e_2 \xor e_3)
+\end{flalign*}
+
+La fórmula se puede describir de la siguiente forma: la salida $v$ será 1 si $e_0$ o $e_1$ son 1 (pero no ambos al mismo tiempo) y a su vez $e_2$ y $e_3$ son ambos 0. O, de forma análoga, si $e_2$ o $e_3$ son 1 (pero no ambos al mismo tiempo) y a su vez $e_0$ y $e_1$ son ambos 0.
 
 \pagebreak
 
-\subsection{}
+Planteamos un único circuito para el codificador con la salida que indica si la entrada está en un estado válido.
+
+\begin{figure}[ht]
+    \includesvg{Circuitos/Codificador_v2}
+\end{figure}
 
 \pagebreak
 

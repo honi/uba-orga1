@@ -3,6 +3,8 @@
 Carrera: Ciencias de la Computación - UBA\
 Cursada: 1er cuatrimestre 2022
 
+Los circuitos se diseñaron utilizando [Logisim Evolution](https://github.com/logisim-evolution/logisim-evolution).
+
 ## Índice
 
 - Prácticas
@@ -13,4 +15,4 @@ Cursada: 1er cuatrimestre 2022
   - Práctica 2
     - [Enunciado](Prácticas/Enunciados/Práctica2.pdf)
     - [Soluciones](Prácticas/Soluciones/Práctica2.pdf)
-    - [Circuitos](Prácticas/Soluciones/circuitos)
+    - [Circuitos](Prácticas/Soluciones/Circuitos)
