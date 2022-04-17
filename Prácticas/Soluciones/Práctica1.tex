@@ -171,7 +171,7 @@ $\implies$ BABA$_{13}$ = 26010$_{10}$ = 320230$_6$
 
 \section{Ejercicio 2}
 
-Consideramos que hubo acarreo en la operación cuando hay acarreo en la suma del bit más significativo. En estos casos es cuando el número ya no puede ser representado con el sistema de precisión fija.
+Consideramos que hubo acarreo en la operación cuando hay acarreo en la suma del bit más significativo. En estos casos el número ya no puede ser representado con el sistema de precisión fija.
 
 \begin{multicols}{5}
 
@@ -388,7 +388,7 @@ Dada la representación de un número en complemento a 2, para obtener la repres
 
 \section{Ejercicio 9}
 
-Consideramos que hubo acarreo en la operación cuando hay acarreo en la suma del bit más significativo. Este acarreo puede o no ser overflow. Una regla sencilla para detectar overflow es fijarse si el acarreo que entró al bit más significativo es distinto al acarreo que salió. En ese caso hubo overflow.
+Consideramos que hubo acarreo en la operación cuando hay acarreo en la suma del bit más significativo. Este acarreo puede o no ser overflow. En la representación complemento a 2 se puede utilizar la siguiente regla para detectar overflow: hay overflow si la suma de 2 números con el mismo signo produce un resultado con el signo opuesto. Dicho de otra forma más low level: hay overflow si el acarreo que entró al bit más significativo es distinto al acarreo que salió.
 
 \textbf{No se produzca acarreo ni overflow}
 \begin{lstlisting}
@@ -450,6 +450,8 @@ Consideramos que hubo acarreo en la operación cuando hay acarreo en la suma del
 --------
    1000$_2$ = -8$_{10}$ $\neq$ 8$_{10}$
 \end{lstlisting}
+
+\pagebreak
 
 \textbf{El resultado sea negativo y no se produzca overflow}
 \begin{lstlisting}
