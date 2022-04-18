@@ -338,9 +338,21 @@ $
     0 & 0 & 0 & 1 & 1 & 1 \\
 \end{tabular}
 
-$s_1 = \overline{e_0}.\overline{e_1}.e_2.\overline{e_3} + \overline{e_0}.\overline{e_1}.\overline{e_2}.e_3$
+$
+s_1
+= \overline{e_0} . \overline{e_1} . e_2 . \overline{e_3} + \overline{e_0} . \overline{e_1} . \overline{e_2} . e_3
+= \overline{e_0} . \overline{e_1} . (e_2 . \overline{e_3} + \overline{e_2} . e_3)
+= \overline{e_0 + e_1} . (e_2 . \overline{e_3} + \overline{e_2} . e_3)
+= (e_0 \nor e_1) . (e_2 \xor e_3)
+$
 
-$s_0 = \overline{e_0}.e_1.\overline{e_2}.\overline{e_3} + \overline{e_0}.\overline{e_1}.\overline{e_2}.e_3$
+$
+s_0
+= \overline{e_0} . e_1 . \overline{e_2} . \overline{e_3} + \overline{e_0} . \overline{e_1} . \overline{e_2} . e_3
+= \overline{e_0} . \overline{e_2} . (e_1 . \overline{e_3} + \overline{e_1} . e_3)
+= \overline{e_0 + e_2} . (e_1 . \overline{e_3} + \overline{e_1} . e_3)
+= (e_0 \nor e_2) . (e_1 \xor e_3)
+$
 
 \emph{Nota: Consideramos $s_1$ como el bit más significativo de la representación binaria del número $i$.}
 
@@ -383,7 +395,7 @@ La fórmula se puede describir de la siguiente forma: la salida $v$ será 1 si $
 Planteamos un único circuito para el codificador con la salida que indica si la entrada está en un estado válido.
 
 \begin{figure}[ht]
-    \includesvg{Circuitos/Codificador_v2}
+    \includesvg{Circuitos/Codificador}
 \end{figure}
 
 \pagebreak
