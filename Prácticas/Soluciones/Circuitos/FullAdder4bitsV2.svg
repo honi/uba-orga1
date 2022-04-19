@@ -14,10 +14,10 @@
    <ellipse cx="526.0" cy="107.0" fill="rgb(0, 0, 0)" rx="5.0" ry="5.0" stroke="none" stroke-width="3.0"/>
    <ellipse cx="496.0" cy="287.0" fill="rgb(0, 0, 0)" rx="5.0" ry="5.0" stroke="none" stroke-width="3.0"/>
    <ellipse cx="646.0" cy="247.0" fill="rgb(0, 0, 0)" rx="5.0" ry="5.0" stroke="none" stroke-width="3.0"/>
-   <ellipse cx="496.0" cy="87.0" fill="rgb(0, 0, 0)" rx="5.0" ry="5.0" stroke="none" stroke-width="3.0"/>
-   <ellipse cx="586.0" cy="147.0" fill="rgb(0, 0, 0)" rx="5.0" ry="5.0" stroke="none" stroke-width="3.0"/>
    <ellipse cx="496.0" cy="167.0" fill="rgb(0, 0, 0)" rx="5.0" ry="5.0" stroke="none" stroke-width="3.0"/>
    <ellipse cx="556.0" cy="127.0" fill="rgb(0, 0, 0)" rx="5.0" ry="5.0" stroke="none" stroke-width="3.0"/>
+   <ellipse cx="496.0" cy="87.0" fill="rgb(0, 0, 0)" rx="5.0" ry="5.0" stroke="none" stroke-width="3.0"/>
+   <ellipse cx="586.0" cy="147.0" fill="rgb(0, 0, 0)" rx="5.0" ry="5.0" stroke="none" stroke-width="3.0"/>
    <polyline fill="none" points="76,72 76,77 76,367 266,367" stroke="rgb(0, 0, 0)" stroke-linecap="square" stroke-width="3.0"/>
    <polygon fill="none" points="67,62 76,72 85,62 85,38 67,38" stroke="rgb(0, 0, 0)" stroke-linecap="square" stroke-width="2.0"/>
    <text fill="rgb(0, 0, 0)" font-family="Monospaced" font-size="12" transform="rotate(90.0,70.0,43.0)" x="70.0" y="43.0">x1</text>

@@ -316,9 +316,9 @@
     <wire from="(80,70)" to="(80,110)"/>
     <wire from="(80,70)" to="(90,70)"/>
   </circuit>
-  <circuit name="Demultiplexor_v1">
+  <circuit name="DemultiplexorV1">
     <a name="appearance" val="logisim_evolution"/>
-    <a name="circuit" val="Demultiplexor_v1"/>
+    <a name="circuit" val="DemultiplexorV1"/>
     <a name="circuitnamedboxfixedsize" val="true"/>
     <a name="simulationFrequency" val="1.0"/>
     <comp lib="0" loc="(380,180)" name="Pin">
@@ -436,9 +436,9 @@
     <wire from="(90,70)" to="(90,90)"/>
     <wire from="(90,90)" to="(110,90)"/>
   </circuit>
-  <circuit name="Demultiplexor_v2">
+  <circuit name="DemultiplexorV2">
     <a name="appearance" val="logisim_evolution"/>
-    <a name="circuit" val="Demultiplexor_v2"/>
+    <a name="circuit" val="DemultiplexorV2"/>
     <a name="circuitnamedboxfixedsize" val="true"/>
     <a name="simulationFrequency" val="1.0"/>
     <comp lib="0" loc="(440,120)" name="Pin">
@@ -954,9 +954,9 @@
     <wire from="(80,60)" to="(120,60)"/>
     <wire from="(80,90)" to="(140,90)"/>
   </circuit>
-  <circuit name="FullAdder4bits_v1">
+  <circuit name="FullAdder4bitsV1">
     <a name="appearance" val="logisim_evolution"/>
-    <a name="circuit" val="FullAdder4bits_v1"/>
+    <a name="circuit" val="FullAdder4bitsV1"/>
     <a name="circuitnamedboxfixedsize" val="true"/>
     <a name="simulationFrequency" val="1.0"/>
     <comp lib="0" loc="(100,90)" name="Pin">
@@ -1076,9 +1076,9 @@
     <wire from="(70,210)" to="(300,210)"/>
     <wire from="(70,90)" to="(70,210)"/>
   </circuit>
-  <circuit name="FullAdder4bits_v2">
+  <circuit name="FullAdder4bitsV2">
     <a name="appearance" val="logisim_evolution"/>
-    <a name="circuit" val="FullAdder4bits_v2"/>
+    <a name="circuit" val="FullAdder4bitsV2"/>
     <a name="circuitnamedboxfixedsize" val="true"/>
     <a name="simulationFrequency" val="1.0"/>
     <comp lib="0" loc="(100,90)" name="Pin">
@@ -1248,5 +1248,256 @@
     <wire from="(70,90)" to="(70,280)"/>
     <wire from="(720,130)" to="(730,130)"/>
     <wire from="(720,290)" to="(730,290)"/>
+  </circuit>
+  <circuit name="Negator4bits">
+    <a name="appearance" val="logisim_evolution"/>
+    <a name="circuit" val="Negator4bits"/>
+    <a name="circuitnamedboxfixedsize" val="true"/>
+    <a name="simulationFrequency" val="1.0"/>
+    <comp lib="0" loc="(130,120)" name="Pin">
+      <a name="appearance" val="NewPins"/>
+      <a name="facing" val="west"/>
+      <a name="label" val="s0"/>
+      <a name="output" val="true"/>
+    </comp>
+    <comp lib="0" loc="(130,30)" name="Pin">
+      <a name="appearance" val="NewPins"/>
+      <a name="facing" val="west"/>
+      <a name="label" val="s3"/>
+      <a name="output" val="true"/>
+    </comp>
+    <comp lib="0" loc="(130,60)" name="Pin">
+      <a name="appearance" val="NewPins"/>
+      <a name="facing" val="west"/>
+      <a name="label" val="s2"/>
+      <a name="output" val="true"/>
+    </comp>
+    <comp lib="0" loc="(130,90)" name="Pin">
+      <a name="appearance" val="NewPins"/>
+      <a name="facing" val="west"/>
+      <a name="label" val="s1"/>
+      <a name="output" val="true"/>
+    </comp>
+    <comp lib="0" loc="(80,120)" name="Pin">
+      <a name="appearance" val="NewPins"/>
+      <a name="label" val="e0"/>
+    </comp>
+    <comp lib="0" loc="(80,30)" name="Pin">
+      <a name="appearance" val="NewPins"/>
+      <a name="label" val="e3"/>
+    </comp>
+    <comp lib="0" loc="(80,60)" name="Pin">
+      <a name="appearance" val="NewPins"/>
+      <a name="label" val="e2"/>
+    </comp>
+    <comp lib="0" loc="(80,90)" name="Pin">
+      <a name="appearance" val="NewPins"/>
+      <a name="label" val="e1"/>
+    </comp>
+    <comp lib="1" loc="(120,120)" name="NOT Gate"/>
+    <comp lib="1" loc="(120,30)" name="NOT Gate"/>
+    <comp lib="1" loc="(120,60)" name="NOT Gate"/>
+    <comp lib="1" loc="(120,90)" name="NOT Gate"/>
+    <wire from="(120,120)" to="(130,120)"/>
+    <wire from="(120,30)" to="(130,30)"/>
+    <wire from="(120,60)" to="(130,60)"/>
+    <wire from="(120,90)" to="(130,90)"/>
+    <wire from="(80,120)" to="(90,120)"/>
+    <wire from="(80,30)" to="(90,30)"/>
+    <wire from="(80,60)" to="(90,60)"/>
+    <wire from="(80,90)" to="(90,90)"/>
+  </circuit>
+  <circuit name="Inverter4bitsV1">
+    <a name="appearance" val="logisim_evolution"/>
+    <a name="circuit" val="Inverter4bitsV1"/>
+    <a name="circuitnamedboxfixedsize" val="true"/>
+    <a name="simulationFrequency" val="1.0"/>
+    <comp lib="0" loc="(360,130)" name="Constant">
+      <a name="value" val="0x0"/>
+    </comp>
+    <comp lib="0" loc="(360,170)" name="Constant"/>
+    <comp lib="0" loc="(670,120)" name="Pin">
+      <a name="appearance" val="NewPins"/>
+      <a name="facing" val="west"/>
+      <a name="label" val="s0"/>
+      <a name="output" val="true"/>
+    </comp>
+    <comp lib="0" loc="(670,30)" name="Pin">
+      <a name="appearance" val="NewPins"/>
+      <a name="facing" val="west"/>
+      <a name="label" val="s3"/>
+      <a name="output" val="true"/>
+    </comp>
+    <comp lib="0" loc="(670,60)" name="Pin">
+      <a name="appearance" val="NewPins"/>
+      <a name="facing" val="west"/>
+      <a name="label" val="s2"/>
+      <a name="output" val="true"/>
+    </comp>
+    <comp lib="0" loc="(670,90)" name="Pin">
+      <a name="appearance" val="NewPins"/>
+      <a name="facing" val="west"/>
+      <a name="label" val="s1"/>
+      <a name="output" val="true"/>
+    </comp>
+    <comp lib="0" loc="(80,120)" name="Pin">
+      <a name="appearance" val="NewPins"/>
+      <a name="label" val="e0"/>
+    </comp>
+    <comp lib="0" loc="(80,30)" name="Pin">
+      <a name="appearance" val="NewPins"/>
+      <a name="label" val="e3"/>
+    </comp>
+    <comp lib="0" loc="(80,60)" name="Pin">
+      <a name="appearance" val="NewPins"/>
+      <a name="label" val="e2"/>
+    </comp>
+    <comp lib="0" loc="(80,90)" name="Pin">
+      <a name="appearance" val="NewPins"/>
+      <a name="label" val="e1"/>
+    </comp>
+    <comp loc="(340,30)" name="Negator4bits"/>
+    <comp loc="(620,30)" name="FullAdder4bitsV2"/>
+    <wire from="(100,70)" to="(100,90)"/>
+    <wire from="(100,70)" to="(120,70)"/>
+    <wire from="(110,90)" to="(110,120)"/>
+    <wire from="(110,90)" to="(120,90)"/>
+    <wire from="(340,30)" to="(400,30)"/>
+    <wire from="(340,50)" to="(400,50)"/>
+    <wire from="(340,70)" to="(400,70)"/>
+    <wire from="(340,90)" to="(400,90)"/>
+    <wire from="(360,130)" to="(400,130)"/>
+    <wire from="(360,170)" to="(400,170)"/>
+    <wire from="(380,110)" to="(380,150)"/>
+    <wire from="(380,110)" to="(400,110)"/>
+    <wire from="(380,150)" to="(400,150)"/>
+    <wire from="(620,30)" to="(670,30)"/>
+    <wire from="(620,50)" to="(660,50)"/>
+    <wire from="(620,70)" to="(650,70)"/>
+    <wire from="(620,90)" to="(640,90)"/>
+    <wire from="(640,120)" to="(670,120)"/>
+    <wire from="(640,90)" to="(640,120)"/>
+    <wire from="(650,70)" to="(650,90)"/>
+    <wire from="(650,90)" to="(670,90)"/>
+    <wire from="(660,50)" to="(660,60)"/>
+    <wire from="(660,60)" to="(670,60)"/>
+    <wire from="(80,120)" to="(110,120)"/>
+    <wire from="(80,30)" to="(120,30)"/>
+    <wire from="(80,60)" to="(90,60)"/>
+    <wire from="(80,90)" to="(100,90)"/>
+    <wire from="(90,50)" to="(120,50)"/>
+    <wire from="(90,50)" to="(90,60)"/>
+  </circuit>
+  <circuit name="Inverter4bitsV2">
+    <a name="appearance" val="logisim_evolution"/>
+    <a name="circuit" val="Inverter4bitsV2"/>
+    <a name="circuitnamedboxfixedsize" val="true"/>
+    <a name="simulationFrequency" val="1.0"/>
+    <comp lib="0" loc="(360,200)" name="Constant">
+      <a name="value" val="0x0"/>
+    </comp>
+    <comp lib="0" loc="(360,240)" name="Constant"/>
+    <comp lib="0" loc="(670,100)" name="Pin">
+      <a name="appearance" val="NewPins"/>
+      <a name="facing" val="west"/>
+      <a name="label" val="s3"/>
+      <a name="output" val="true"/>
+    </comp>
+    <comp lib="0" loc="(670,130)" name="Pin">
+      <a name="appearance" val="NewPins"/>
+      <a name="facing" val="west"/>
+      <a name="label" val="s2"/>
+      <a name="output" val="true"/>
+    </comp>
+    <comp lib="0" loc="(670,160)" name="Pin">
+      <a name="appearance" val="NewPins"/>
+      <a name="facing" val="west"/>
+      <a name="label" val="s1"/>
+      <a name="output" val="true"/>
+    </comp>
+    <comp lib="0" loc="(670,190)" name="Pin">
+      <a name="appearance" val="NewPins"/>
+      <a name="facing" val="west"/>
+      <a name="label" val="s0"/>
+      <a name="output" val="true"/>
+    </comp>
+    <comp lib="0" loc="(670,40)" name="Pin">
+      <a name="appearance" val="NewPins"/>
+      <a name="facing" val="west"/>
+      <a name="label" val="F"/>
+      <a name="output" val="true"/>
+    </comp>
+    <comp lib="0" loc="(80,100)" name="Pin">
+      <a name="appearance" val="NewPins"/>
+      <a name="label" val="e3"/>
+    </comp>
+    <comp lib="0" loc="(80,130)" name="Pin">
+      <a name="appearance" val="NewPins"/>
+      <a name="label" val="e2"/>
+    </comp>
+    <comp lib="0" loc="(80,160)" name="Pin">
+      <a name="appearance" val="NewPins"/>
+      <a name="label" val="e1"/>
+    </comp>
+    <comp lib="0" loc="(80,190)" name="Pin">
+      <a name="appearance" val="NewPins"/>
+      <a name="label" val="e0"/>
+    </comp>
+    <comp lib="1" loc="(580,50)" name="AND Gate">
+      <a name="size" val="30"/>
+    </comp>
+    <comp lib="1" loc="(620,60)" name="AND Gate">
+      <a name="size" val="30"/>
+    </comp>
+    <comp lib="1" loc="(670,40)" name="AND Gate">
+      <a name="size" val="30"/>
+    </comp>
+    <comp loc="(340,100)" name="Negator4bits"/>
+    <comp loc="(620,100)" name="FullAdder4bitsV2"/>
+    <wire from="(100,140)" to="(100,160)"/>
+    <wire from="(100,140)" to="(120,140)"/>
+    <wire from="(110,100)" to="(120,100)"/>
+    <wire from="(110,160)" to="(110,190)"/>
+    <wire from="(110,160)" to="(120,160)"/>
+    <wire from="(110,30)" to="(110,100)"/>
+    <wire from="(110,30)" to="(640,30)"/>
+    <wire from="(340,100)" to="(400,100)"/>
+    <wire from="(340,120)" to="(350,120)"/>
+    <wire from="(340,140)" to="(370,140)"/>
+    <wire from="(340,160)" to="(390,160)"/>
+    <wire from="(350,120)" to="(400,120)"/>
+    <wire from="(350,70)" to="(350,120)"/>
+    <wire from="(350,70)" to="(590,70)"/>
+    <wire from="(360,200)" to="(400,200)"/>
+    <wire from="(360,240)" to="(400,240)"/>
+    <wire from="(370,140)" to="(400,140)"/>
+    <wire from="(370,60)" to="(370,140)"/>
+    <wire from="(370,60)" to="(550,60)"/>
+    <wire from="(380,180)" to="(380,220)"/>
+    <wire from="(380,180)" to="(400,180)"/>
+    <wire from="(380,220)" to="(400,220)"/>
+    <wire from="(390,160)" to="(400,160)"/>
+    <wire from="(390,40)" to="(390,160)"/>
+    <wire from="(390,40)" to="(550,40)"/>
+    <wire from="(580,50)" to="(590,50)"/>
+    <wire from="(620,100)" to="(670,100)"/>
+    <wire from="(620,120)" to="(660,120)"/>
+    <wire from="(620,140)" to="(650,140)"/>
+    <wire from="(620,160)" to="(640,160)"/>
+    <wire from="(620,60)" to="(630,60)"/>
+    <wire from="(630,50)" to="(630,60)"/>
+    <wire from="(630,50)" to="(640,50)"/>
+    <wire from="(640,160)" to="(640,190)"/>
+    <wire from="(640,190)" to="(670,190)"/>
+    <wire from="(650,140)" to="(650,160)"/>
+    <wire from="(650,160)" to="(670,160)"/>
+    <wire from="(660,120)" to="(660,130)"/>
+    <wire from="(660,130)" to="(670,130)"/>
+    <wire from="(80,100)" to="(110,100)"/>
+    <wire from="(80,130)" to="(90,130)"/>
+    <wire from="(80,160)" to="(100,160)"/>
+    <wire from="(80,190)" to="(110,190)"/>
+    <wire from="(90,120)" to="(120,120)"/>
+    <wire from="(90,120)" to="(90,130)"/>
   </circuit>
 </project>

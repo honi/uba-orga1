@@ -320,7 +320,7 @@ s_0 = \overline{c_1}.\overline{c_0}.e_0
 $
 
 \begin{figure}[ht]
-    \includesvg{Circuitos/Demultiplexor_v1}
+    \includesvg{Circuitos/DemultiplexorV1}
 \end{figure}
 
 \pagebreak
@@ -430,7 +430,7 @@ $
 \subsection{}
 
 \begin{figure}[ht]
-    \includesvg{Circuitos/Demultiplexor_v2}
+    \includesvg{Circuitos/DemultiplexorV2}
 \end{figure}
 
 \pagebreak
@@ -516,7 +516,7 @@ Por lo tanto, el retardo total del circuito para producir todas su señales de s
 \subsection{}
 
 \begin{figure}[ht]
-    \includesvg[width=\textwidth]{Circuitos/FullAdder4bits_v2}
+    \includesvg[width=\textwidth]{Circuitos/FullAdder4bitsV2}
 \end{figure}
 
 \emph{Nota: Este circuito ya incluye los flags del item b.}
@@ -540,5 +540,78 @@ Sí, el circuito funciona para sumar números codificados en notación sin signo
     \item Carry: es el nuevo flag de overflow
     \item Zero: sin cambios
 \end{itemize}
+
+\subsection{}
+
+Para realizar restas se podría modificar el circuito agregando una nueva señal de control $O$ para indicar la operación: $0$ representa suma, $1$ representa resta.
+
+Si los números están representados en complemento a 2, el procedimiento sería el siguiente:
+
+\begin{itemize}
+    \item Invertir todos los bits de la entrada $B.$
+    \item Suministrar un $1$ en el $C_{in}$ del full adder del bit menos significativo.
+\end{itemize}
+
+De esta forma encontramos el inverso aditivo de la entrada $B$ y en efecto la operación realizada es: $A + (-B) = A - B$.
+
+Para números representados en notación sin signo, si restringimos la entrada a 3 bits, el número se representa igual en complemento a 2 con 4 bits y podemos hacer la misma operación planteada anteriormente.
+
+Tabla de verdad de la resta:
+
+\begin{tabular}{|c|c|c||c|c|}
+    $A$ & $B$ & $\text{borrow}_{in}$ & $\text{resta}$ & $\text{borrow}_{out}$ \\
+    \hline
+    0 & 0 & 0 & 0 & 0 \\
+    0 & 0 & 1 & 1 & 1 \\
+    0 & 1 & 0 & 1 & 1 \\
+    0 & 1 & 1 & 0 & 1 \\
+    1 & 0 & 0 & 1 & 0 \\
+    1 & 0 & 1 & 0 & 0 \\
+    1 & 1 & 0 & 0 & 0 \\
+    1 & 1 & 1 & 1 & 1 \\
+\end{tabular}
+
+\subsection{}
+
+\emph{Pendiente}
+
+\subsection{}
+
+\emph{Pendiente}
+% \begin{tabular}{|c|cccc|cccc|}
+%     Condición & Complemento a 2 & Notación sin signo \\
+%     \hline
+%     $A < B$ & $N=1$ & \\
+%     $A \leq B$ & $N=1 \lor Z=1$ & \\
+%     $A = B$ & $Z=1$ & \\
+%     $A \geq B$ & $N=0 \lor Z=1$ & \\
+%     $A > B$ & $N=0$ & \\
+% \end{tabular}
+
+\section{Ejercicio 13}
+
+\subsection{Negador}
+
+Simplemente negamos todas las entradas.
+
+\begin{figure}[ht]
+    \includesvg{Circuitos/Negator4bits}
+\end{figure}
+
+\subsection{Inversor}
+
+Utilizando el negador y un full adder (para sumar 1) podemos aplicar el algoritmo para invertir un número en representación complemento a 2.
+
+\begin{figure}[ht]
+    \includesvg{Circuitos/Inverter4bitsV1}
+\end{figure}
+
+\subsection{Inversor con flag}
+
+El único número que no tiene inverso aditivo en representación complemento a 2 es el $-8_{10}$, el cual se representa con el siguiente numeral: $1000_2$. Por lo tanto, la fórmula booleana para prender el flag es la siguiente: $F = e_3 . \overline{e_2} . \overline{e_1} . \overline{e_0}$.
+
+\begin{figure}[ht]
+    \includesvg{Circuitos/Inverter4bitsV2}
+\end{figure}
 
 \end{document}
