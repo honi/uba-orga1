@@ -13,6 +13,9 @@ Los circuitos se diseñaron utilizando [Logisim Evolution](https://github.com/lo
     - [Enunciado](Prácticas/Enunciados/Práctica1.pdf)
     - [Soluciones](Prácticas/Soluciones/Práctica1.pdf)
   - Práctica 2
-    - [Enunciado](Prácticas/Enunciados/Práctica2.pdf)
-    - [Soluciones](Prácticas/Soluciones/Práctica2.pdf)
+    - Enunciado: [Parte A](Prácticas/Enunciados/Práctica2A.pdf), [Parte B](Prácticas/Enunciados/Práctica2B.pdf)
+    - [Soluciones](Prácticas/Soluciones/Práctica2.pdf) (me falta la parte B)
     - [Circuitos](Prácticas/Soluciones/Circuitos)
+  - Práctica 3
+    - [Enunciado](Prácticas/Enunciados/Práctica3.pdf)
+    - [Soluciones](Prácticas/Soluciones/Práctica3.pdf)
