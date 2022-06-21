@@ -33,9 +33,9 @@ signals = {
     "DE_enOutImm": 24,
     "DE_loadL": 25,
     "DE_loadH": 26,
-    "RESERVED27": 27,
-    "RESERVED28": 28,
-    "RESERVED29": 29,
+    "SP_load": 27,
+    "SP_inc": 28,
+    "SP_enOut": 29,
     "load_microOp": 30,
     "reset_microOp": 31
 }

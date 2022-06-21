@@ -36,9 +36,10 @@ opcodes = {
 # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # #
 
 # Nuevas instrucciones
-type_R += ["SIG", "NEG", "RET"]
+type_R += ["SIG", "NEG"]
 type_RR += ["MIX"]
-type_RM += ["CALL"]
+type_M += ["CALL"]
+type_NOARGS = ["RET"]
 opcodes.update({
     "SIG": 9,
     "NEG": 10,
@@ -56,5 +57,6 @@ if __name__ == '__main__':
             "type_R": type_R,
             "type_RS": type_RS,
             "type_RI": type_RI,
-            "def_DB": def_DB
+            "type_NOARGS": type_NOARGS,
+            "def_DB": def_DB,
         }, opcodes)
