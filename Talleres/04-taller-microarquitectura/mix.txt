@@ -1,0 +1,7 @@
+     |00| SET R0 , 00000000b
+     |02| SET R1 , 11111111b
+     |04| MIX R0 , R1
+     |06| SET R2 , 00000101b
+     |08| SET R3 , 10100000b
+     |0a| MIX R2 , R3
+halt |0c| JMP halt

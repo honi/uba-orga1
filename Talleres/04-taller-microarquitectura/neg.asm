@@ -1,0 +1,8 @@
+SET R0, 0x01
+NEG R0
+
+SET R1, 0xFF
+NEG R1
+
+halt:
+JMP halt

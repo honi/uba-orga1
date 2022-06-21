@@ -1,0 +1,24 @@
+                 |00| JMP init
+                 |02| JMP init
+            init |04| SET R0 , 0x0F
+                 |06| SET R1 , 0x0F
+                 |08| SET R2 , 0x00
+                 |0a| SET R3 , 0x08
+                 |0c| SET R4 , 0x02
+                 |0e| STR [ 0xF1 ] , R4
+                 |10| SET R7 , cambiarVelocidad
+                 |12| STR [ 0x02 ] , R7
+                 |14| STI
+            loop |16| STR [ 0xF0 ] , R0
+                 |18| JMP loop
+cambiarVelocidad |1a| CMP R0 , R1
+                 |1c| JZ entrarEnCurva
+    salirDeCurva |1e| SET R0 , 0x0F
+                 |20| ADD R2 , R3
+                 |22| JZ subirBocina
+                 |24| IRET
+     subirBocina |26| INC R4
+                 |28| STR [ 0xF1 ] , R4
+                 |2a| IRET
+   entrarEnCurva |2c| SET R0 , 0x0C
+                 |2e| IRET

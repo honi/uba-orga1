@@ -1,0 +1,11 @@
+main:	MOV R1, 0x4228
+llama:	CALL subrut
+	DW 0x6008
+	DW 0xFEDE
+	DW 0xF450
+	DW 0xDEAD
+subrut:	DW 0x3840
+	DW 0x2114
+	JNE llama
+	DW 0xC000
+		
