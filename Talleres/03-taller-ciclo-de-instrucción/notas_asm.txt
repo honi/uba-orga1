@@ -1,0 +1,103 @@
+Notas sobre el ensamblador del simulador
+########################################
+
+Desde el simulador se puede cargar programas de dos formas: la
+primera consiste en cargar los archivos binarios con el estado
+inicial de la máquina y un dump de la memoria (esto se hace
+mediante el botón "Load from file", ver ejemplos en el directorio
+ejemplos_bin) y la segunda consiste cargar uno o más archivos con
+el código fuente que un ensamblador embebido convertirá a binario
+(esto se logra con el botón "Load source files", ver ejemplos en
+el directorio ejemplos_asm), a continuación se describen las
+características y consideraciones a tener en cuenta del
+ensamblador embebido.
+
+Etiqueta main
+=============
+Al cargar archivos para el ensamblador se pueden cargar uno o más
+archivos y alguno de los archivos debe contener una etiqueta
+llamada 'main'. El simulador comenzará con el PC apuntando a la
+dirección de memoria que le corresponda a dicha etiqueta. Además,
+todos los programas, luego de ensamblados, se cargan a partir de la
+posición 0x0000 de memoria.
+
+Valores inmediatos y DW
+=======================
+Cualquier valor inmediato que se incluya dentro de los programas
+a ensamblar debe ser especifica en el formato 0xHHHH (donde H es
+un dígito hexadecimal entre 0 y F), además las direcciones de
+memoria se debe especificar de la misma forma. Los siguientes
+ejemplos no logran el efecto deseado:
+
+MOV R0, 15     # Lo correcto sería MOV R0, 0x000F
+MOV [FFFF], R0 # Lo correcto sería MOV [0xFFFF], R0
+
+Cualquier secuencia de caracteres provista como operando que no
+coincida con el formato descripto será interpretada como una
+etiqueta (que de no existir generará un error por la consola de
+log).
+
+Además se permite el uso de la directiva de ensamblador DW que
+permite definir una secuencia de bits, tomando como único operando
+el número hexadecimal que representa la secuencia, por ejemplo:
+
+DW 0x1111
+
+Carga en la posición de memoria que corresponda la secuencia de
+bits 0001000100010001.
+
+Comentarios
+===========
+El ensamblador permite poner comentarios con el símbolo #, los
+mismo pueden estar en la misma línea que el código o ser de una
+línea entera.
+
+Etiquetas públicas y privadas
+=============================
+Se pueden definir etiquetas públicas y privadas, cualquier
+etiqueta es pública excepto con que comience con '_', lo que
+la convierte en privada.
+El alcance de una etiqueta privada es el archivo donde está
+definida, mientras que el de una pública es todos los archivos
+que se ensamblan juntos.
+Esto permite definir etiquetas públicas que sean el comienzo
+de un procedimiento a modo de función, llamarlo mediante CALL
+y que el mismo retorne mediante RET. Asimismo se podrían definir
+archivos con librerías de funciones.
+
+Archivos generados
+==================
+Luego de un ensamblado exitoso se generan dos archivos en el
+directorio donde se encuentren los archivos. Unos de los
+archivos contiene el estado inicial de la máquina y una refencia
+al otro archivo que contine un dump binario de la memoria.
+El nombre de los archivos está formado por los nombres de todos
+los archivos (sin extensión) unidos por '_' y agregándole
+'Full.dat' a uno y 'Mem.dat' al otro.
+Estos archivos pueden usarse luego para cargar el programa
+mediante el botón "Load from file", eligiendo el archivo terminado
+en 'Full.dat'.
+
+Chequeos de errores
+===================
+El ensamblador chequea los siguientes tipos de error y avisa de
+ellos en la consola de log, abortando el ensamblado:
+
+-Instrucción no existente
+-Instrucción utilizada con un número de operandos diferente del
+ esperado.
+-Etiqueta definida múltiples veces (en un mismo archivo o en varios).
+-Etiqueta 'main' no definida.
+-Referencia a etiqueta no definida.
+-Referencia a etiqueta privada en un archivo externo.
+-Intento de salto condicional para el que no alcanzan los 8 bits de
+ offset.
+ 
+El único tipo de error que NO es chequeado es la utilización de
+modos de direccionamiento no soportados para la instrucción para
+la que se usa. A pesar de que la arquitectura tiene una
+ortogonalidad casi absoluta, no lo es.
+El ensamblador ensamblará código semánticamente ilógico, pero el
+simulador, al llegar a la posición de memoria correspondiente,
+alertará al intentar decodificar la instrucción que el modo de
+direccionamiento utilizado es inválido.

@@ -1,0 +1,43 @@
+{signal: [
+  {name: 'clk', wave: 'P....', phase: 0.5},
+  {name: 'force_input', wave: '010.'},
+  {name: 'en_force_input', wave: '010.'},
+  {name: 'w_0', wave: '0...'},
+  {name: 'w_1', wave: '010.'},
+  {name: 'w_2', wave: '0...'},
+  {name: 'en_0', wave: '0...'},
+  {name: 'en_1', wave: '0...'},
+  {name: 'en_2', wave: '0...'},
+],
+  config: {hscale: 2},
+}
+
+
+{
+	signal: [
+		{name: 'clk', wave: 'P......', phase: 1},
+		{name: 'force_input', wave: 'x3/...', data: ['A']},
+		{name: 'en_force_input', wave: '010...'},
+		{name: 'bus', wave: 'x3.43.', data: ['A', 'B', 'A']},
+        {},
+        [
+            'R0',
+            {name: 'w_0', wave: '01010.'},
+            {name: 'en_0', wave: '0.10..'},
+            {name: 'r0', wave: 'x.3.4..', data: ['A', 'B'], phase: 1},
+        ],
+        [
+            'R1',
+            {name: 'w_1', wave: '0.10..'},
+            {name: 'en_1', wave: '0...10'},
+            {name: 'r1', wave: 'x..3...', data: ['A'], phase: 1},
+        ],
+        [
+            'R2',
+            {name: 'w_2', wave: '0...10'},
+            {name: 'en_2', wave: '0..10.'},
+            {name: 'r2', wave: '4....3.', data: ['B', 'A'], phase: 1},
+        ]
+	],
+	config: {hscale: 2},
+}

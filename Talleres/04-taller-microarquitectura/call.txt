@@ -1,0 +1,12 @@
+init |00| SET R7 , 0xFF
+main |02| SET R0 , 0x02
+     |04| SET R1 , 0x03
+     |06| CALL R7 , add
+halt |08| JMP halt
+ add |0a| ADD R0 , R1
+     |0c| CALL R7 , sub
+     |0e| ADD R0 , R1
+     |10| RET R7
+ sub |12| SET R2 , 0x04
+     |14| SUB R0 , R2
+     |16| RET R7

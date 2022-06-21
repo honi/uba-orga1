@@ -1,0 +1,8 @@
+1. Abrir una consola (bash de linux o cmd de windows).
+2. Si el binario java se encuentra en el PATH ir al paso 4,
+   si no seguir con el 3.
+3. Ir al directorio donde se encuentran los binarios de java.
+4. Ejecutar "./java -jar ruta_interpreter" en linux o
+   "java -jar ruta_interpreter" en windows, donde
+   ruta_interpreter es la ruta completa donde se encuentra
+   el archivo Interpreter.jar.

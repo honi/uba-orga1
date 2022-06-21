@@ -1,0 +1,7 @@
+      |00| SET R1 , 0
+      |02| CMP R0 , R1
+ciclo |04| JZ halt
+      |06| ADD R1 , R0
+      |08| DEC R0
+      |0a| JMP ciclo
+ halt |0c| JMP halt

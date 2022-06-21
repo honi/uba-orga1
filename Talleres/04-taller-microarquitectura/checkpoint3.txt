@@ -1,0 +1,6 @@
+          |00| JMP seguir
+   seguir |02| SET R0 , 0xFF
+          |04| SET R1 , 0x11
+siguiente |06| ADD R0 , R1
+          |08| JC siguiente
+     halt |0a| JMP halt
