@@ -173,11 +173,7 @@
     ALU_enOut MM_enAddr
     PC_enOut MM_load
     ; SP ← SP + 1
-    ALU_OP=cte0x01
-    ALU_enOut ALU_enA
-    SP_enOut ALU_enB
-    ALU_OP=ADD
-    ALU_enOut SP_load
+    SP_inc
     ; PC ← M
     DE_enOutImm PC_load
     reset_microOp
@@ -185,11 +181,8 @@
 01101: ; RET
     ; RET
     ; SP ← SP - 1
-    SP_enOut ALU_enA
-    ALU_OP=cte0x01
-    ALU_enOut ALU_enB
-    ALU_OP=SUB
-    ALU_enOut SP_load
+    ; El SP internamente usa un contador que cuando inc=1 AND load=1 decrementa en 1
+    SP_inc SP_load
     ; PC ← [0xFF - SP]
     ALU_OP=cte0xFF
     ALU_enOut ALU_enA
