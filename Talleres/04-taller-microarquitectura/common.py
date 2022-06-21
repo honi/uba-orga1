@@ -113,9 +113,7 @@ def removeLabels(tokens, types):
     instructions = []
     labels = {}
     for t in tokens:
-        if len(t) < 2:
-            return None, None
-        if t[1] == reserveLabel:
+        if len(t) > 1 and t[1] == reserveLabel:
             labels[t[0]] = instCount
             if len(t) > 2:
                 instructions = instructions + [t[2:]]
@@ -202,7 +200,6 @@ def parseInstructions(instructions, labels, types, opcodes):
     parseBytes = []
     parseHuman = []
     for i in instructions:
-
         try:
             # AAA Rx,Ry || Rx <= Rx AAA Ry
             if i[0] in types["type_RR"]:
@@ -253,13 +250,6 @@ def parseInstructions(instructions, labels, types, opcodes):
                             "M": mem2num(i[4], labels)
                         })
                     appendParse(parseBytes, parseHuman, i, n)
-                elif i[0] == "CALL" and i[1][0] == "R" and i[2] == ",":
-                    n = buidInst({
-                            "O": opcodes[i[0]],
-                            "X": reg2num(i[1]),
-                            "M": mem2num(i[3], labels)
-                        })
-                    appendParse(parseBytes, parseHuman, i, n)
                 else:
                     raise ValueError("Error: Invalid instruction \"" + i[0] +
                                      "\"")
@@ -302,6 +292,11 @@ def parseInstructions(instructions, labels, types, opcodes):
             elif i[0] in types["def_DB"]:
                 parseHuman.append([len(parseBytes), i])
                 parseBytes.append(mem2num(i[1], labels))
+
+            # RET
+            elif i[0] in types["type_NOARGS"]:
+                n = buidInst({"O": opcodes[i[0]]})
+                appendParse(parseBytes, parseHuman, i, n)
 
             ##
             else:

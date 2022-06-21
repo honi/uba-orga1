@@ -164,29 +164,37 @@
     reset_microOp
 
 01100: ; CALL
-    ; CALL Rx, M
-    ; [Rx] ← PC
-    RB_enOut RB_selectIndexOut=0 MM_enAddr
-    PC_enOut MM_load
-    ; Rx ← Rx - 1
-    RB_enOut RB_selectIndexOut=0 ALU_enA
-    ALU_OP=cte0x01
-    ALU_enOut ALU_enB
+    ; CALL M
+    ; [0xFF - SP] ← PC
+    ALU_OP=cte0xFF
+    ALU_enOut ALU_enA
+    SP_enOut ALU_enB
     ALU_OP=SUB
-    RB_enIn RB_selectIndexIn=0 ALU_enOut
+    ALU_enOut MM_enAddr
+    PC_enOut MM_load
+    ; SP ← SP + 1
+    ALU_OP=cte0x01
+    ALU_enOut ALU_enA
+    SP_enOut ALU_enB
+    ALU_OP=ADD
+    ALU_enOut SP_load
     ; PC ← M
-    PC_load DE_enOutImm
+    DE_enOutImm PC_load
     reset_microOp
 
 01101: ; RET
-    ; RET Rx
-    ; Rx ← Rx + 1
-    RB_enOut RB_selectIndexOut=0 ALU_enA
+    ; RET
+    ; SP ← SP - 1
+    SP_enOut ALU_enA
     ALU_OP=cte0x01
     ALU_enOut ALU_enB
-    ALU_OP=ADD
-    RB_enIn RB_selectIndexIn=0 ALU_enOut
-    ; PC ← [Rx]
-    RB_enOut RB_selectIndexOut=0 MM_enAddr
+    ALU_OP=SUB
+    ALU_enOut SP_load
+    ; PC ← [0xFF - SP]
+    ALU_OP=cte0xFF
+    ALU_enOut ALU_enA
+    SP_enOut ALU_enB
+    ALU_OP=SUB
+    ALU_enOut MM_enAddr
     MM_enOut PC_load
     reset_microOp
