@@ -1,0 +1,7 @@
+init |00| SET R0 , 0x00
+main |02| INC R0
+     |04| JP halt
+     |06| INC R0
+     |08| JP halt
+     |0a| INC R0
+halt |0c| JMP halt

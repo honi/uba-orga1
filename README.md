@@ -1,7 +1,7 @@
-# Organización del Computador 1
+# Organización del Computador I
 
-Carrera: Ciencias de la Computación - UBA\
-Cursada: 1er cuatrimestre 2022
+Ciencias de la Computación - FCEN - UBA\
+1er cuatrimestre 2022
 
 Los circuitos se diseñaron utilizando [Logisim Evolution](https://github.com/logisim-evolution/logisim-evolution).
 
@@ -19,3 +19,7 @@ Los circuitos se diseñaron utilizando [Logisim Evolution](https://github.com/lo
   - Práctica 3
     - [Enunciado](Prácticas/Enunciados/Práctica3.pdf)
     - [Soluciones](Prácticas/Soluciones/Práctica3.pdf)
+
+- Parcial
+
+  - 2022-06-26: [Parcial domiciliario sobre RISC-V](Parcial/)

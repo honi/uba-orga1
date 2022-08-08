@@ -1,0 +1,86 @@
+\section{Ejercicio 4}
+
+Para agregar el nuevo flag P tenemos que modificar la ALU de la siguiente forma:
+
+\begin{enumerate}
+    \item Agregar un nuevo circuito en la ALU para determinar la paridad del resultado de la operación realizada. Este circuito utiliza la salida del multiplexor que selecciona el circuito de la operación realizada y lo conecta con la entrada de datos del registro ALU\_OUT. Para detectar si un número es par podemos mirar el bit menos significativo. Si éste vale 0, entonces el número es par, caso contrario es impar. Por lo tanto, el circuito no es más que un splitter para obtener el bit menos significativo y luego negarlo ya que queremos que $P=1 \iff b_0 = 0$.
+    \item Enviar el resultado del circuito de paridad a un nuevo registro interno de la ALU llamado P. Éste está configurado de la misma forma que los registros de los otros flags, se escribe solo si la señal opW=1. Así podemos usar la ALU para operaciones intermedias en un microprograma en donde no queremos modificar los flags.
+    \item Agregar 1 bit adicional al pin de salida flags de la ALU (ahora es una señal de 4 bits ya que hay 4 flags). Conectar el bit 3 de este pin a la salida del registro P.
+\end{enumerate}
+
+Si bien nuestra ALU ya puede calcular el flag P que indica la paridad del resultado de alguna operación, no podemos usarlo ya que la unidad de control aún no está cableada de ninguna forma con este nuevo flag.
+
+Agregamos entonces una nueva instrucción a la ISA que permite realizar un salto condicional en función del flag P. El formato de la instrucción es el siguiente:
+
+\begin{table}[ht]
+\ttfamily
+\begin{tabular}{|l|c|c|l|}
+    Instrucción & CodOp & Formato & Acción \\
+    \hline
+    JP M & 01100 & C & Si flag\_P=1 entonces PC $\gets$ M
+\end{tabular}
+\end{table}
+
+Utilizamos el código de operación (CodOp) \lstinline{01100}$_2 = 12_{10}$ ya que se encuentra disponible, y elegimos el formato C porque la operación JP necesita recibir un único parámetro de 8 bits: la dirección de memoria a donde saltar si se cumple la condición.
+
+Las microinstrucciones (una línea del microprograma) son codificadas en una palabra de 32 bits que es guardada en la memoria de la unidad de control.
+Una microinstrucción contiene todas las señales de control que se deben activar (setear en 1) durante ese ciclo de clock.
+Para traducir una microinstrucción a su correspondiente palabra de 32 bits miramos cada señal que se debe activar durante ese ciclo de clock y colocamos un 1 en el bit correspondiente a cada señal.
+``Ejecutar'' una microinstrucción es simplemente seleccionar su dirección en la memoria de la unidad de control. La salida de la memoria se descompone en 32 cables individuales, donde cada cable lleva una determinada señal de control (el cable del bit 0 lleva la señal de control asociada al bit 0 y así sucesivamente con los 32 bits).
+
+Los microprogramas de los saltos condicionales de la máquina \lstinline{Orga1SmallI} están implementados en sí mismos con saltos condicionales. Éstos saltos dentro de los microprogramas se computan con un circuito dedicado que modifica el microPC en función de la condición de salto. Para esto, se require una señal en la unidad de control que indica que queremos saltar condicionalmente en base a algún flag en particular. El circuito de salto realiza un AND entre ésta señal y la señal del flag que determina el salto (es decir algún bit de la entrada flags de la unidad de control). El resultado de este AND controla un multiplexor de 2 entradas para seleccionar entre las constantes \lstinline{0x01} o \lstinline{0x02}, que luego es sumada al microPC. Si se incrementa el microPC en 1, significa que no hay salto y termina el microprograma. Pero si se incrementa el microPC en 2, nos salteamos la microinstrucción de ``fin''(reset\_microOp) y ahora tenemos espacio para la secuencia de microinstrucciones necesarias para realizar el salto intencionado (en esencia, cargar el valor M en el PC). La estructura de los microprogramas de los saltos condicionales y el circuito descripto están fuertemente vinculados ya que trabajan en conjunto y se debe respetar ciertas convenciones para su correcto funcionamiento.
+
+Para implementar el salto condicional por paridad (JP) tenemos que modificar la unidad de control de la siguiente forma:
+
+\begin{enumerate}
+    \item Agregar una nueval señal jp\_microOp en la unidad de control. Podemos utilizar el bit 23 ya que se encuentra disponible.
+    \item Agregamos un nuevo AND entre jp\_microOp y el bit 3 de la señal de flags que corresponde al flag P. La salida de este nuevo AND se conecta con el OR entre los ANDs de los otros saltos condicionales.
+    \item Conectamos la señal jp\_microOp en el OR entre las otras señales de salto condicional: jc\_microOp, jz\_microOp, jn\_microOp. Esto no es necesario para el circuito de salto en sí mismo, existe porque el manejo de interrupciones (puntualmente la decisión de ejecutar la RAI o no) require de un salto condicional en el microprograma del fetch de 7 direcciones en vez de 2.
+\end{enumerate}
+
+Por último necesitamos agregar el nuevo microprograma para la instrucción JP.
+
+\begin{algorithm}[H]
+\ttfamily
+\begin{algorithmic}[1]
+    \State 01100: \Comment{{\color{gray}Código de operación de la instrucción JP}}
+    \State \;\; JP\_microOp load\_microOp \Comment{{\color{gray}JP\_microOp AND flag\_P = 1 $\implies$ microPC = microPC + 2}}
+    \State \;\; reset\_microOp \Comment{{\color{gray}flag\_P = 0 $\implies$ no hay salto, terminamos el microprograma}}
+    \State \;\; DE\_enOutImm PC\_load \Comment{{\color{gray}flag\_P = 1 $\implies$ saltamos a la dirección M (valor inmediato)}}
+    \State \;\; reset\_microOp
+\end{algorithmic}
+\end{algorithm}
+
+A modo de ejemplo y prueba de funcionamiento, el siguiente programa utiliza la nueva instrucción JP. Después del primer incremento R0 vale 1, y por lo tanto no se ejecuta el salto de la línea 5. Después del segundo incremento, R0 vale 2 y es par, por lo tanto sucede el salto de la línea 7 y termina la ejecución del programa. El tercer incremento nunca sucede, y al finalizar la ejecución R0 termina valiendo 2.
+
+\begin{algorithm}[H]
+\ttfamily
+\begin{algorithmic}[1]
+    \State init:
+    \State SET R0, 0x00
+    \State main:
+    \State INC R0
+    \State JP halt \Comment{{\color{gray}No salta porque R0 = 1}}
+    \State INC R0
+    \State JP halt \Comment{{\color{gray}Ahora sí salta porque R0 = 2}}
+    \State INC R0
+    \State halt:
+    \State JMP halt
+\end{algorithmic}
+\end{algorithm}
+
+\textbf{Modificaciones en la ALU}
+
+\begin{figure}[H]
+    \centering
+    \includesvg[scale=0.7]{ej4/alu}
+\end{figure}
+
+\textbf{Modificaciones en la Unidad de Control}
+
+\begin{figure}[H]
+    \centering
+    \includesvg[scale=0.8]{ej4/control_unit}
+\end{figure}
+
+En la carpeta ``ej4'' incluída en la entrega se encuentran todos los archivos de la máquina \lstinline{Orga1SmallI} con las modificaciones detalladas para poder utilizar la instrucción JP (también se modificó el script Python para poder ensamblar los microprogramas y programas).

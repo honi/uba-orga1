@@ -1,0 +1,27 @@
+\section{Ejercicio 3}
+
+BGT es una pseudo-instrucción. El ensamblador transforma BGT (branch if greater than) por BLT (branch if less than) dando vuelta los operandos. Es fácil ver que la condición de salto de ambas instrucciones son equivalentes si se invierte el orden de los operandos.
+
+Las instrucciones de salto condicional utilizan el formato B, que para aumentar el rango de salto, se multiplica el valor inmediato por 2 durante el ensamblado (shift lógico hacia la izquierda de 1 bit). Esto funciona de forma segura porque todas las instrucciones de RISC-V tienen un tamaño múltiplo de 2 bytes. Es más, la razón de multiplicar por 2 es porque existe una extensión compacta de RISC-V llamada RV32C donde las instrucciones tienen un tamaño de 2 bytes. Si no fuera por RV32C, se podría lograr un rango de salto aún mayor multiplicando por 4 ya que todas las instrucciones de RV32I tienen un tamaño de 4 bytes.
+
+Al multiplicar por 2 el valor de offset, en esencia sabemos que el resultado será un número par y consecuentemente el bit menos significativo será siempre 0. Es por esto que el bit menos significativo del offset está omitido en el formato de instrucción B, y así ganamos 1 bit más de ``resolución'' (podemos saltar más lejos). Luego a nivel circuito se coloca siempre un 0 en el bit menos significativo del offset.
+
+Los saltos condicionales en RISC-V se ensamblan en modo ``PIC'' = position independent code. Es decir, en vez de especificar un valor absoluto de memoria a dónde saltar, se especifica el offset (desplazamiento) relativo al PC. Si se cumple la condición de salto, tenemos que sumar offset al valor actual del PC.
+
+Notemos que el PC es un registro de 32 bits, mientras que el offset está representado con 13 bits en complemento a 2 (12 bits embebidos en la instrucción más el 0 colocado a la fuerza en el bit menos significativo). Por esto es necesario extender el offset a 32 bits preservando el signo antes de realizar la suma, y así permitir correctamente saltos hacia adelante o atrás (offsets positivos o negativos).
+
+Podemos describir la instrucción BGT de la siguiente forma:
+
+\lstinline{BGT rs2,rs1,offset $\equiv$ BLT rs1,rs2,offset $\equiv$ if (rs1 < rs2) pc += signExt(offset << 1)}
+
+A expensas de un formato de instrucción un poco rebuscado (los bits del valor inmediato parecen tener una ubicación arbitraria dentro del formato de instrucción), el bit más significativo del valor inmediato es a su vez el bit más significativo de la instrucción. Es decir, el bit más significativo del valor inmediato, sin importar su tamaño, aparece siempre en el mismo lugar de la instrucción. Esto simplifica el hardware ya que ahora el circuito de extensión de signo siempre tiene que mirar el mismo bit de la instrucción para decidir qué hacer.
+
+Otro detalle relevante para los saltos condicionales es que éstos no revisan su condición de salto en base a los flags de la ALU. En cambio, las instrucciones de salto condicional reciben 2 registros los cuales son comparados para determinar si se debe saltar o no. La ventaja de esto es que permite optimizar la ejecución fuera-de-orden durante el proceso de pipelining, ya que al no usar los flags de la ALU, la condición de salto no sería afectada por otras operaciones realizadas fuera-de-orden.
+
+\textbf{Comparación con Orga1}
+
+Orga1 al igual que RISC-V posee instrucciones de salto condicional ``redundantes'' para simplificar la tarea del programador. No obstante, Orga1 no posee pseudo-instrucciones, así que todas las instrucciones que brinda requieren opcodes distintos.
+
+Respecto a las condiciones de salto, Orga1 es fundamentalmente distinta a RISC-V en que las condiciones se basan exclusivamente en los flags de la ALU. Si bien a alto nivel es lo mismo y se pueden lograr las mismas funcionalidades, la arquitectura de Orga1 impone una dependencia temporal entre las instrucciones. Los flags que usa la instrucción de salto condicional fueron actualizados durante la última operación de la ALU (solo si la operación modificaba los flags). Esto quiere decir que hay que tener cuidado con lo que pasa entre la instrucción que modificó los flags y la instrucción de salto condicional. Si bien Orga1 no tiene interrupciones, éstas probablemente generen un problema si no se tiene en cuenta de salvar el estado de los flags y luego restaurarlos al terminar de atender la interrupción.
+
+Respecto al offset, conceptualmente funciona igual que RISC-V. La instrucción de salto condicional contiene un valor de 8 bits en complemento a 2 que indica la cantidad de palabras a saltar. Al realizar la suma con el PC, se deberá extender el signo del offset a 16 bits.

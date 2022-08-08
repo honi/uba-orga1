@@ -1,0 +1,15 @@
+\section{Ejercicio 2}
+
+El registro x0 está cableado a 0. Esto significa que no se puede modificar su valor. Por más que las instrucciones permitan usar al registro x0 como registro destino, su valor nunca cambia. Y al usar el registro x0 como operando de alguna instrucción, su valor siempre será 0.
+
+Recordemos que RISC = reduced instruction set computer. Por lo tanto se podría decir que uno de los objetivos principales de RISC-V es mantener el ISA lo más chico posible. Esto quiere decir que hay muchísimas instrucciones ``faltantes'' en el ISA de RISC-V (puntualmente RV32I) por el simple hecho de que se pueden realizar con alguna otra instrucción existente, ya sea intercambiando el orden de los operandos o previamente seteando algún registro en un valor en particular.
+
+Para simplificar la vida del programador, RISC-V posee pseudo-instrucciones, que son como un ``alias'' de una o más instrucciones. Estas pseudo-instrucciones se transforman en instrucciones durante el proceso de ensamblado, y básicamente agregan expresividad al lenguaje assembler de RISC-V (permiten escribir código más conciso, simplifican la cantidad de operandos de las instrucciones, o simplemente aportan mejor legibilidad al programa).
+
+Algunas de las pseudo-instrucciones provistas por RV32I son saltos condicionales comparando con 0, o poner en 1 un registro en base a la comparación con 0. Estas operaciones se realizan utilizando las instrucciones provistas por RV32I que son más genéricas, es decir, permiten comparar con cualquier valor, no solo con el 0.
+
+El registro x0 resulta muy práctico junto a las pseudo-instrucciones. En RV32I hay 32 de ellas que usan al registro x0 como operando (también podemos usarlo en nuestros propios programas). La ventaja del registro x0 en este contexto es que muchas instrucciones operan únicamente entre registros (por ejemplo las instrucciones de salto condicional BXX). Si necesitamos que uno de esos registros sea 0, tendríamos que primero cargar un 0 en algún registro y luego ejecutar la instrucción deseada. Gracias al registro x0 nos ahorramos ese paso ya que x0 siempre vale 0. No solo simplificamos el código (comparar con 0 requiere un operando menos que la comparación genérica) sino que también resulta más eficiente porque nos ahorramos una instrucción. Otras pseudo-instrucciones que usan el registro x0 simplemente mejoran la legibilidad pero no son más eficientes que haber usado las instrucciones directamente (como por ejemplo MV y RET).
+
+\textbf{Comparación con Orga1}
+
+Orga1 admite varios modos de direccionamiento, entre ellos el inmediato. Si utilizamos 0 como valor inmediato, podemos lograr algo muy parecido al registro x0 de RISC-V. No obstante, utilizar el valor inmediato tiene la penalidad de requerir cargar 1 palabra adicional de memoria (el 0) durante el fetch. Más allá del rendimiento de la máquina, desde la óptica del programador, estamos a un solo caracter de distancia entre escribir x0 ó 0x0.

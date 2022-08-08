@@ -1,0 +1,9 @@
+init |00| SET R0 , 0x00
+     |02| SET R1 , 0x01
+     |04| SET R2 , 0x02
+main |06| MSTR [ R0 ] , 0x01
+     |08| MMOV [ R1 ] , [ R0 ]
+     |0a| MADD [ R2 ] , [ R0 ]
+     |0c| MADD [ R2 ] , [ R1 ]
+     |0e| MLOAD R3 , [ R2 ]
+halt |10| JMP halt

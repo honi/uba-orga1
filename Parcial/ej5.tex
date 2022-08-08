@@ -1,0 +1,30 @@
+\section{Ejercicio 5}
+
+El microprograma pedido podría corresponder a la siguiente instrucción.
+
+\begin{table}[ht]
+\ttfamily
+\begin{tabular}{|l|c|c|l|}
+    Instrucción & CodOp & Formato & Acción \\
+    \hline
+    MOV [Rx], [Ry] & 01100 & A & Mem[Rx] $\gets$ Mem[Ry]
+\end{tabular}
+\end{table}
+
+El microprograma de esta operación delega gran parte del trabajo al nuevo controlador de memoria. No obstante, es necesario ejecutar algunas microinstrucciones iniciales para configurar el controlador de memoria antes de pedirle que haga la copia. En esencia, le tenemos que decir desde qué dirección vamos a leer y a cuál escribir. Se utiliza la nomenclatura \lstinline{bXXX} para indicar una constante en representación binaria.
+
+\begin{algorithm}[H]
+\ttfamily
+\begin{algorithmic}[1]
+    \State 01100: \Comment{{\color{gray}Código de operación de la instrucción MOV [Rx], [Ry]}}
+    \State \;\; {\color{gray}; Colocamos el valor de Rx en el bus y lo guardamos en el registro destino wrAddr}
+    \State \;\; RB\_enOut RB\_selectIndexOut=0 mem\_op=b001
+    \State \;\; {\color{gray}; Colocamos el valor de Ry en el bus y lo guardamos en el registro fuente rdAddr}
+    \State \;\; RB\_enOut RB\_selectIndexOut=1 mem\_op=b010
+    \State \;\; {\color{gray}; Ejecutamos la operación de copia dentro del controlador de memoria}
+    \State \;\; mem\_op=b111
+    \State \;\; reset\_microOp
+\end{algorithmic}
+\end{algorithm}
+
+Un detalle importante que asume este microprograma es que las operaciones del controlador de memoria requieren un único ciclo de clock. Caso contrario, se podrían agregar microinstrucciones nulas para esperar al controlador de memoria antes de terminar el microprograma y así asegurarse que las próximas instrucciones disponen de la memoria en su estado esperado.

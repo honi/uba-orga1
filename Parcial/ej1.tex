@@ -1,0 +1,17 @@
+\section{Ejercicio 1}
+
+La operación \lstinline{ANDI rd,rs1,imm} realiza un AND lógico bit a bit entre rs1 y el valor inmediato imm, colocando el resultado en el registro destino rd.
+
+Es importante destacar que todos los registros de RISC-V (RV32I específicamente) son de 32 bits, mientras que el valor inmediato es de 12 de bits. A diferencia de otras arquitecturas, RISC-V extiende el signo de los valores inmediatos de forma automática antes de realizar la operación.
+
+Por lo tanto, en la instrucción \lstinline{ANDI a2,a1,0xf0f} el valor inmediato \lstinline{0xf0f} es primero extendido a \lstinline{0xffffff0f}. Luego se realiza un AND entre éste valor y el valor del registro a1 que por el enunciado sabemos que es \lstinline{0xffffffff}. Por lo tanto el resultado de la operación es \lstinline{0xffffffff & 0xffffff0f = 0xffffff0f} y se guarda en el registro a2.
+
+\textbf{Comparación con Orga1}
+
+La máquina Orga1 posee una única instrucción AND, pero a diferencia de RISC-V soporta varios modos de direccionamiento. Esto permite utilizar una misma instrucción con distintas configuraciones de operandos (entre registros, registro a memoria, con valor inmediato, etc), sin necesidad de definir instrucciones distintas para cada combinación de tipos de operandos.
+
+Otra diferencia es que las instrucciones de Orga1 aceptan como máximo 2 operandos, mientras que las de RISC-V pueden aceptar hasta 3. Notemos que si en RISC-V se usa algún registro fuente también como destino, en esencia estamos en la misma situación que ofrece Orga1.
+
+Por lo tanto la instrucción ANDI de RV32I se puede realizar en Orga1 con la instrucción AND utilizando el modo de direccionamiento a registro para el operando destino, y el modo inmediato para el operando fuente, y asumiendo que en la versión de RISC-V se usó algún registro fuente también como registro destino.
+
+Orga1 no tiene la necesidad de extender el signo de los valores inmediatos porque éstos siempre tienen el tamaño de una palabra (16 bits), al igual que los registros.
