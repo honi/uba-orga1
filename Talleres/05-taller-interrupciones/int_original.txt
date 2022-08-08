@@ -1,0 +1,12 @@
+     |00| SET R1 , 0x03
+     |02| SET R2 , 0x00
+     |04| SET R3 , rai
+     |06| STR [ 0x00 ] , R3
+     |08| STI
+loop |0a| CMP R1 , R2
+     |0c| JZ fin
+     |0e| JMP loop
+ fin |10| CLI
+halt |12| JMP halt
+ rai |14| DEC R1
+     |16| IRET
